@@ -12,6 +12,7 @@ body {
 
 p {
     color: var(--text-color);
+    /* width: fit-content; */
 }
 
 .corner {
@@ -65,19 +66,26 @@ p {
 
 .day:nth-child(1),
 .classes:nth-child(1),
-.classes > .rows:nth-child(6) {
+.classes > .rows:nth-child(6),
+.times > .time-rows:nth-child(6) {
     border: none;
 }
 
-.classes {
+.classes,
+.times {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.rows {
+.rows,
+.time-rows {
     width: 100%;
-    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    /* flex-grow: calc(100% / 6); */
+    height: calc(100% / 6);
+    /* text-wrap: wrap; */
     display: grid;
     place-items: center;
     border-bottom: 1px solid var(--text-color);
