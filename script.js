@@ -1,15 +1,21 @@
 const days = document.getElementsByClassName("classes");
 var timetable = [];
-// var subjectNames = document.getElementsByClassName("monday-classes")[0].children;
 var i = 0;
 
 for (const day of days) {
     timetable[i] = Array.from(day.children);
-
     i++;
 }
 
-console.log(timetable);
+function buttonClicked() {
+    var daySelector = document.getElementById("day_selector").value,
+        periodSelector = document.getElementById("period_selector").value,
+        text = document.getElementById("text").value;
+
+    addText(text, timetable[daySelector][periodSelector]);
+
+    document.getElementById("text").value = "";
+}
 
 addText("science", timetable[0][0]);
 addText("table tennis", timetable[1][1]);
