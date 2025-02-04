@@ -35,7 +35,7 @@ function addText(text, subject) {
 }
 
 function rand(array) {
-    var rand = Math.floor(Math.random() * (array.length - 1));
+    var rand = Math.floor(Math.random() * array.length);
     console.log(rand);
 
     return rand;
