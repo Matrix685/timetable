@@ -18,20 +18,8 @@ function buttonClicked() {
     document.getElementById("text").value = "";
 }
 
-// addText("science", timetable[0][0]);
-// addText("table tennis", timetable[1][1]);
-// addText("twelve", timetable[2][2]);
-// addText("WATCH ARCANE", timetable[3][3]);
-// addText("science", timetable[4][4]);
-
-// addText("science", timetable[0][5]);
-// addText("science", timetable[1][4]);
-// addText("science", timetable[2][3]);
-// addText("science", timetable[3][2]);
-// addText("science", timetable[4][1]);
-
 function addText(text, subject) {
-    subject.children[0].innerHTML = text;
+    subject.firstElementChild.innerHTML = text;
 }
 
 function rand(array) {
@@ -45,22 +33,13 @@ function chooseRand(subject) {
     var randDays = rand(days);
     var randPeriod = rand(Array(6));
 
-    if (timetable[randDays][randPeriod].children[0].innerHTML != "") chooseRand(subject);
+    if (timetable[randDays][randPeriod].firstElementChild.innerHTML != "") chooseRand(subject);
 
     addText(subject, timetable[randDays][randPeriod]);
 }
 
 var subjects = ["Béarla", "Gaeilge", "Mata"];
 
-for (const subject of subjects) {
-    // var randDays = rand(days);
-    // var randPeriod = rand(Array(6));
-
-    // if (timetable[randDays][randPeriod].children[0].innerHTML != "") continue;
-
-    // addText(subject, timetable[randDays][randPeriod]);
-
-    chooseRand(subject);
-}
+subjects.forEach((n) => chooseRand(n));
 
 // alert("if you are reading this, i messed up somehow");
