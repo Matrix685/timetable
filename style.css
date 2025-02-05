@@ -5,11 +5,14 @@
 }
 
 body {
-    height: 100vh;
-    margin: 0rem;
+    margin: 0vmax;
+}
+
+.main {
+    height: 120vh;
     padding: 8vmin;
     display: grid;
-    grid-template-rows: calc(78% - 3vmin) 22%;
+    grid-template-rows: calc(78vh - 3vmin) 1fr;
     row-gap: 3vmin;
     place-items: center;
     background-color: #1b1a1d;
@@ -114,7 +117,7 @@ h3 {
 .selector-box,
 .rng {
     width: 40%;
-    height: 200%;
+    /* height: 200%; */
     display: grid;
     padding: 5vmin 8vmin;
     box-sizing: border-box;
@@ -139,7 +142,10 @@ h3 {
 }
 
 .drag {
-    margin: 2vmin;
+    margin-top: 2vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .selectors {
