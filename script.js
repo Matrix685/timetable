@@ -1,11 +1,52 @@
 const days = document.getElementsByClassName("classes");
 
+function Tile(day, period) {
+    this.day = day;
+    this.period = period;
+
+    this.addSubject = function (text) {
+        timetable[this.day][this.period].firstElementChild.innerHTML = text;
+    };
+
+    this.addRoom = function (text) {
+        timetable[this.day][this.period].lastElementChild.innerHTML = text;
+    };
+}
+
 var timetable = [];
+var tiles = [];
+
 var i = 0;
+var j = 0;
+var k = 0;
 
 for (const day of days) {
-    timetable[i] = Array.from(day.children);
+    var children = Array.from(day.children);
+    var b = [];
+
+    children.map((n) => {
+        var subject = document.createElement("p");
+        subject.id = "subject";
+
+        var room = document.createElement("p");
+        room.id = "room";
+
+        n.appendChild(subject);
+        n.appendChild(room);
+
+        a = new Tile(j, k);
+        b.push(a);
+
+        k++;
+    });
+    // console.log(day.children);
+
+    timetable[i] = children;
+    tiles.push(b);
+
     i++;
+    j++;
+    k = 0;
 }
 
 function buttonClicked() {
@@ -13,33 +54,40 @@ function buttonClicked() {
         periodSelector = document.getElementById("period_selector").value,
         text = document.getElementById("text").value;
 
-    addText(text, timetable[daySelector][periodSelector]);
+    tiles[daySelector][periodSelector].addSubject(text);
 
     document.getElementById("text").value = "";
 }
 
-function addText(text, subject) {
-    subject.firstElementChild.innerHTML = text;
+function removeChosen(array, chosen) {
+    array.splice(array.indexOf(chosen), 1);
+
+    return chosen;
 }
 
 function rand(array) {
     var rand = Math.floor(Math.random() * array.length);
-    console.log(rand);
+    // console.log(rand);
+    // console.log(array[rand]);
 
-    return rand;
+    return array[rand];
 }
 
-function chooseRand(subject) {
-    var randDays = rand(days);
-    var randPeriod = rand(Array(6));
+function chooseRand() {
+    var randDay = rand(tiles);
+    var randPeriod = rand(randDay);
 
-    if (timetable[randDays][randPeriod].firstElementChild.innerHTML != "") chooseRand(subject);
-
-    addText(subject, timetable[randDays][randPeriod]);
+    return removeChosen(randDay, randPeriod);
 }
 
 var subjects = ["Béarla", "Gaeilge", "Mata"];
+var rooms = ["semora mor", "5", "9"];
 
-subjects.forEach((n) => chooseRand(n));
+subjects.forEach((subject) => {
+    var chosen = chooseRand();
 
-// alert("if you are reading this, i messed up somehow");
+    chosen.addSubject(subject);
+    chosen.addRoom(removeChosen(rooms, rand(rooms)));
+});
+
+// console.log(tiles);
