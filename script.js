@@ -34,12 +34,11 @@ for (const day of days) {
         n.appendChild(subject);
         n.appendChild(room);
 
-        a = new Tile(j, k);
+        var a = new Tile(j, k);
         b.push(a);
 
         k++;
     });
-    // console.log(day.children);
 
     timetable[i] = children;
     tiles.push(b);
@@ -73,21 +72,82 @@ function rand(array) {
     return array[rand];
 }
 
-function chooseRand() {
+function chooseRandTile() {
     var randDay = rand(tiles);
+    // console.log(randDay);
+
+    if (randDay.length == 0) {
+        removeChosen(tiles, randDay);
+        randDay = rand(tiles);
+    }
+
+    // console.log(`randDay: ${randDay.length}`);
+    // console.log(`tiles: ${tiles.length}`);
+
     var randPeriod = rand(randDay);
 
     return removeChosen(randDay, randPeriod);
 }
 
-var subjects = ["Béarla", "Gaeilge", "Mata"];
-var rooms = ["semora mor", "5", "9"];
+function chooseRandRoom() {
+    var chosen = rand(rooms);
 
-subjects.forEach((subject) => {
-    var chosen = chooseRand();
+    return removeChosen(rooms, chosen);
+}
+
+var subjects = {
+    priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"],
+
+    roghnach: [
+        ["Adhmadóireacht", "Miotalóireacht", "Eac Bhaile"],
+        ["Ealaín", "Graif Teic", "Gnó"],
+        ["Fisic", "Ceimic", "Bitheolaíocht"],
+    ],
+};
+
+var rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14"];
+var roomsAnchor = JSON.parse(JSON.stringify(rooms));
+
+subjects.priomha.forEach((subject) => {
+    var chosen = chooseRandTile();
 
     chosen.addSubject(subject);
-    chosen.addRoom(removeChosen(rooms, rand(rooms)));
+    chosen.addRoom(chooseRandRoom());
 });
 
-// console.log(tiles);
+subjects.roghnach.forEach((group) => {
+    for (const subject of group) {
+        var chosen = chooseRandTile();
+
+        chosen.addSubject(subject);
+        chosen.addRoom(chooseRandRoom());
+    }
+});
+
+fixArrays();
+
+function fixArrays() {
+    tiles = [];
+    var l = 0;
+    var m = 0;
+
+    for (const day of days) {
+        var b = [];
+
+        Array.from(day.children).forEach(() => {
+            var a = new Tile(l, m);
+            b.push(a);
+
+            m++;
+        });
+
+        tiles.push(b);
+
+        l++;
+        m = 0;
+    }
+
+    rooms = roomsAnchor;
+}
+
+// console.log(rooms);
