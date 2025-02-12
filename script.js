@@ -64,6 +64,7 @@ function removeChosen(array, chosen) {
     return chosen;
 }
 
+// RESIST THE URGE TO MAKE THIS ONE LINE
 function rand(array) {
     var rand = Math.floor(Math.random() * array.length);
     // console.log(rand);
@@ -89,6 +90,7 @@ function chooseRandTile() {
     return removeChosen(randDay, randPeriod);
 }
 
+// RESIST THE URGE TO MAKE THIS ONE LINE
 function chooseRandRoom() {
     var chosen = rand(rooms);
 
