@@ -64,13 +64,12 @@ function removeChosen(array, chosen) {
     return chosen;
 }
 
-// RESIST THE URGE TO MAKE THIS ONE LINE
 function rand(array) {
-    var rand = Math.floor(Math.random() * array.length);
+    // var rand = Math.floor(Math.random() * array.length);
     // console.log(rand);
     // console.log(array[rand]);
 
-    return array[rand];
+    return array[Math.floor(Math.random() * array.length)];
 }
 
 function chooseRandTile() {
@@ -90,11 +89,10 @@ function chooseRandTile() {
     return removeChosen(randDay, randPeriod);
 }
 
-// RESIST THE URGE TO MAKE THIS ONE LINE
 function chooseRandRoom() {
-    var chosen = rand(rooms);
+    // var chosen = rand(rooms);
 
-    return removeChosen(rooms, chosen);
+    return removeChosen(rooms, rand(rooms));
 }
 
 var subjects = {
