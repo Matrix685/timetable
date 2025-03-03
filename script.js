@@ -80,7 +80,7 @@ function chooseRandTile() {
         removeChosen(tiles, randDay);
         randDay = rand(tiles);
     }
-
+    // WEAKLING
     // console.log(`randDay: ${randDay.length}`);
     // console.log(`tiles: ${tiles.length}`);
 
@@ -105,7 +105,24 @@ var subjects = {
     ],
 };
 
-var rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14"];
+var rooms = [
+    "Seomra Mór",
+    "S5",
+    "S9",
+    "Bialann",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S6",
+    "S7",
+    "S8",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+];
 var roomsAnchor = JSON.parse(JSON.stringify(rooms));
 
 subjects.priomha.forEach((subject) => {
