@@ -101,7 +101,7 @@ var subjects = {
     priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"],
 
     roghnach: [
-        ["Adhmadóireacht", "Miotalóireacht", "Eac Bhaile"],
+        ["Adhmadóireacht", "Innealtóireacht", "Eac Bhaile"],
         ["Ealaín", "Graif Teic", "Gnó"],
         ["Fisic", "Ceimic", "Bitheolaíocht"],
     ],
