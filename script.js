@@ -98,7 +98,7 @@ function chooseRandRoom() {
 }
 
 var subjects = {
-    priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"],
+    priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
 
     roghnach: [
         ["Adhmadóireacht", "Miotalóireacht", "Eac Bhaile"],
@@ -107,7 +107,24 @@ var subjects = {
     ],
 };
 
-var rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14"];
+var rooms = [
+    "Seomra Mór",
+    "S5",
+    "S9",
+    "Bialann",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S6",
+    "S7",
+    "S8",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+];
 var roomsAnchor = JSON.parse(JSON.stringify(rooms));
 
 subjects.priomha.forEach((subject) => {

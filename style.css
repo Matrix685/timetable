@@ -27,7 +27,7 @@ h3 {
 }
 
 .corner {
-    background: linear-gradient(135deg, magenta, mediumpurple, magenta);
+    background: linear-gradient(135deg, magenta, mediumblue, magenta);
     background-size: 200%;
     animation: pan 5s infinite linear;
 }
