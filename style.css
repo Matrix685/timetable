@@ -9,10 +9,9 @@ body {
 }
 
 .main {
-    height: 120vh;
     padding: 8vmin;
-    display: grid;
-    grid-template-rows: calc(78vh - 3vmin) 1fr;
+    display: flex;
+    flex-direction: column;
     row-gap: 3vmin;
     place-items: center;
     background-color: #1b1a1d;
@@ -43,9 +42,7 @@ h3 {
 
 .timetable {
     width: 100%;
-    height: 100%;
-    /* display: grid;
-    grid-template-rows: 7% 1fr; */
+    height: 78vh;
     display: flex;
     flex-direction: column;
 }
@@ -58,8 +55,6 @@ h3 {
 }
 
 .columns {
-    /*     display: grid;
-    grid-template-columns: repeat(6, 1fr); */
     display: flex;
     height: 93%;
 }
@@ -78,7 +73,6 @@ h3 {
 
 .day,
 .classes {
-    /*     flex-grow: 1; */
     display: grid;
     place-items: center;
     border-left: 1px solid var(--text-color);
@@ -126,7 +120,7 @@ h3 {
 
 .input-box {
     width: 100%;
-    height: 100%;
+    height: 45vh;
     display: flex;
     justify-content: center;
     gap: 2vmin;
