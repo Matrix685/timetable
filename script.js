@@ -124,6 +124,7 @@ var rooms = [
     "S12",
     "S13",
     "S14",
+    "S15",
 ];
 var roomsAnchor = JSON.parse(JSON.stringify(rooms));
 
