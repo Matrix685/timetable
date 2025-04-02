@@ -10,5 +10,3 @@ bl2:
 -1-2 uair
 -9 scrúdú (praicticiúl?)
 -luain - t2 aoine
-
-
