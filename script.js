@@ -22,12 +22,12 @@ let k = 0;
 
 for (const day of days) {
     let children = Array.from(day.children);
-    let b = [];
 
-    if (i == 2) {
-        children.pop();
-        children.pop();
-    }
+    children = children.filter((n) => {
+        if (n.id !== "locked") return n;
+    });
+
+    let b = [];
 
     children.map((n) => {
         let subject = document.createElement("p");
@@ -142,14 +142,14 @@ function fixArrays() {
 
     for (const day of days) {
         let b = [];
+
         let children = Array.from(day.children);
 
-        if (i == 2) {
-            children.pop();
-            children.pop();
-        }
+        children = children.filter((n) => {
+            if (n.id !== "locked") return n;
+        });
 
-        children.forEach(() => {
+        children.map(() => {
             let a = new Tile(l, m);
             b.push(a);
 
