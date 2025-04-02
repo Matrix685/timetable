@@ -13,30 +13,33 @@ function Tile(day, period) {
     };
 }
 
-var timetable = [];
-var tiles = [];
+let timetable = [];
+let tiles = [];
 
-var i = 0;
-var j = 0;
-var k = 0;
+let i = 0;
+let j = 0;
+let k = 0;
 
 for (const day of days) {
-    var children = Array.from(day.children);
-    var b = [];
+    let children = Array.from(day.children);
+    let b = [];
+
+    if (i == 2) {
+        children.pop();
+        children.pop();
+    }
 
     children.map((n) => {
-        // if (i == 2 && k > 3) continue;
-
-        var subject = document.createElement("p");
+        let subject = document.createElement("p");
         subject.id = "subject";
 
-        var room = document.createElement("p");
+        let room = document.createElement("p");
         room.id = "room";
 
         n.appendChild(subject);
         n.appendChild(room);
 
-        var a = new Tile(j, k);
+        let a = new Tile(j, k);
         b.push(a);
 
         k++;
@@ -50,8 +53,10 @@ for (const day of days) {
     k = 0;
 }
 
+console.log(timetable);
+
 function buttonClicked() {
-    var daySelector = document.getElementById("day_selector").value,
+    let daySelector = document.getElementById("day_selector").value,
         periodSelector = document.getElementById("period_selector").value,
         text = document.getElementById("text").value;
 
@@ -67,7 +72,7 @@ function removeChosen(array, chosen) {
 }
 
 function rand(array) {
-    // var rand = Math.floor(Math.random() * array.length);
+    // let rand = Math.floor(Math.random() * array.length);
     // console.log(rand);
     // console.log(array[rand]);
 
@@ -75,7 +80,7 @@ function rand(array) {
 }
 
 function chooseRandTile() {
-    var randDay = rand(tiles);
+    let randDay = rand(tiles);
     // console.log(randDay);
 
     if (randDay.length == 0) {
@@ -88,18 +93,18 @@ function chooseRandTile() {
     // console.log(`randDay: ${randDay.length}`);
     // console.log(`tiles: ${tiles.length}`);
 
-    var randPeriod = rand(randDay);
+    let randPeriod = rand(randDay);
 
     return removeChosen(randDay, randPeriod);
 }
 
 function chooseRandRoom() {
-    // var chosen = rand(rooms);
+    // let chosen = rand(rooms);
 
     return removeChosen(rooms, rand(rooms));
 }
 
-var subjects = {
+let subjects = {
     priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
 
     roghnach: [
@@ -109,11 +114,11 @@ var subjects = {
     ],
 };
 
-var rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14", "S15"];
-var roomsAnchor = JSON.parse(JSON.stringify(rooms));
+let rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14", "S15"];
+let roomsAnchor = JSON.parse(JSON.stringify(rooms));
 
 subjects.priomha.forEach((subject) => {
-    var chosen = chooseRandTile();
+    let chosen = chooseRandTile();
 
     chosen.addSubject(subject);
     chosen.addRoom(chooseRandRoom());
@@ -121,7 +126,7 @@ subjects.priomha.forEach((subject) => {
 
 subjects.roghnach.forEach((group) => {
     for (const subject of group) {
-        var chosen = chooseRandTile();
+        let chosen = chooseRandTile();
 
         chosen.addSubject(subject);
         chosen.addRoom(chooseRandRoom());
@@ -132,14 +137,20 @@ fixArrays();
 
 function fixArrays() {
     tiles = [];
-    var l = 0;
-    var m = 0;
+    let l = 0;
+    let m = 0;
 
     for (const day of days) {
-        var b = [];
+        let b = [];
+        let children = Array.from(day.children);
 
-        Array.from(day.children).forEach(() => {
-            var a = new Tile(l, m);
+        if (i == 2) {
+            children.pop();
+            children.pop();
+        }
+
+        children.forEach(() => {
+            let a = new Tile(l, m);
             b.push(a);
 
             m++;
