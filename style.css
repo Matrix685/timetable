@@ -106,7 +106,7 @@ h3 {
     border-bottom: 1px solid var(--text-color);
 }
 
-.half-day {
+#locked {
     background-color: #2c2c2e;
 }
 
