@@ -25,6 +25,8 @@ for (const day of days) {
     var b = [];
 
     children.map((n) => {
+        // if (i == 2 && k > 3) continue;
+
         var subject = document.createElement("p");
         subject.id = "subject";
 
@@ -107,25 +109,7 @@ var subjects = {
     ],
 };
 
-var rooms = [
-    "Seomra Mór",
-    "S5",
-    "S9",
-    "Bialann",
-    "S1",
-    "S2",
-    "S3",
-    "S4",
-    "S6",
-    "S7",
-    "S8",
-    "S10",
-    "S11",
-    "S12",
-    "S13",
-    "S14",
-    "S15",
-];
+var rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14", "S15"];
 var roomsAnchor = JSON.parse(JSON.stringify(rooms));
 
 subjects.priomha.forEach((subject) => {
