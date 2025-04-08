@@ -95,7 +95,7 @@
             <div class="input-box">
                 <div class="selector-box">
                     <div class="selectors">
-                        <input type="text" placeholder="Cuir isteach ainm an ábhair" id="text" />
+                        <!-- <input type="text" placeholder="Cuir isteach ainm an ábhair" id="text" /> -->
                         <div class="dropdowns">
                             <select id="day_selector">
                                 <option value="0">Luain</option>
@@ -147,7 +147,13 @@
 
         <!-- popup selector box -->
         <div id="popup-bg" data-hidden="true">
-            <div class="popup"></div>
+            <div class="popup">
+                <div class="inputs">
+                    <input type="text" id="subject_input" />
+                    <input type="text" id="room_input" />
+                    <button id="submit" onclick="buttonClicked()">Críochnaithe</button>
+                </div>
+            </div>
         </div>
 
         <script src="script.js"></script>

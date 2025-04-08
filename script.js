@@ -56,9 +56,9 @@ for (const day of days) {
 console.log(timetable);
 
 function buttonClicked() {
-    let daySelector = document.getElementById("day_selector").value,
-        periodSelector = document.getElementById("period_selector").value,
-        text = document.getElementById("text").value;
+    // let daySelector = document.getElementById("day_selector").value,
+    //     periodSelector = document.getElementById("period_selector").value,
+    //     text = document.getElementById("text").value;
 
     tiles[daySelector][periodSelector].addSubject(text);
 
@@ -115,7 +115,7 @@ let subjects = {
 };
 
 let rooms = ["Seomra Mór", "S5", "S9", "Bialann", "S1", "S2", "S3", "S4", "S6", "S7", "S8", "S10", "S11", "S12", "S13", "S14", "S15"];
-let roomsAnchor = JSON.parse(JSON.stringify(rooms));
+let roomsAnchor = [...rooms];
 
 subjects.priomha.forEach((subject) => {
     let chosen = chooseRandTile();
@@ -132,6 +132,9 @@ subjects.roghnach.forEach((group) => {
         chosen.addRoom(chooseRandRoom());
     }
 });
+
+console.log(rooms);
+console.log(roomsAnchor);
 
 fixArrays();
 
@@ -166,20 +169,28 @@ function fixArrays() {
 }
 
 // console.log(rooms);
+// console.log(roomsAnchor);
 
 const popup = document.getElementById("popup-bg");
 
 for (let day of timetable) {
-    day = day.filter((n) => {
-        if (n.id !== "locked") return n;
-    });
+    // day = day.filter((n) => {
+    //     if (n.id !== "locked") return n;
+    // });
+    day = day.filter((n) => n.id != "locked");
 
-    day.forEach((n) => {
+    day.forEach((n, index) => {
         n.onclick = (e) => {
-            // popup.dataset.hidden = "false";
+            popup.dataset.hidden = "false";
+
+            const subjectSelector = document.getElementById("subject_input");
+            const roomSelector = document.getElementById("room_input");
+
+            subjectSelector.value = e.target.firstElementChild.innerText;
+            roomSelector.value = e.target.lastElementChild.innerText;
 
             // console.log(e.target);
-            console.log(e.target.firstElementChild.innerText);
+            // console.log(e.target.firstElementChild.innerText);
         };
     });
 }
