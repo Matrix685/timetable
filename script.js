@@ -166,3 +166,20 @@ function fixArrays() {
 }
 
 // console.log(rooms);
+
+const popup = document.getElementById("popup-bg");
+
+for (let day of timetable) {
+    day = day.filter((n) => {
+        if (n.id !== "locked") return n;
+    });
+
+    day.forEach((n) => {
+        n.onclick = (e) => {
+            // popup.dataset.hidden = "false";
+
+            // console.log(e.target);
+            console.log(e.target.firstElementChild.innerText);
+        };
+    });
+}

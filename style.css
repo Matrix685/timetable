@@ -2,7 +2,13 @@
     --text-color: #fdfff0;
     --bg-color: #504d66;
     --input-bg: #302d56;
+    --hover-bg: #35346a;
 }
+
+/* html {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+} */
 
 body {
     margin: 0vmax;
@@ -23,6 +29,7 @@ h3 {
     margin: 0px;
     line-height: 2vmin;
     font-family: "Calibri", sans-serif;
+    pointer-events: none;
 }
 
 .corner {
@@ -106,8 +113,17 @@ h3 {
     border-bottom: 1px solid var(--text-color);
 }
 
+.rows {
+    cursor: pointer;
+}
+
+.rows:hover {
+    background-color: var(--hover-bg);
+}
+
 #locked {
     background-color: #2c2c2e;
+    cursor: default;
 }
 
 #subject {
@@ -200,7 +216,7 @@ select,
 #text:hover,
 select:hover,
 #submit:hover {
-    background-color: #35346a;
+    background-color: var(--hover-bg);
 }
 
 #text {
@@ -220,4 +236,25 @@ select:focus,
 input:focus,
 #submit:focus {
     outline: 1px solid var(--text-color);
+}
+
+#popup-bg {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    inset: 0px;
+    background-color: #000a;
+    display: grid;
+    place-items: center;
+}
+
+.popup {
+    width: 70%;
+    height: 60%;
+    background-color: var(--bg-color);
+}
+
+#popup-bg[data-hidden="true"] {
+    opacity: 0;
+    pointer-events: none;
 }
