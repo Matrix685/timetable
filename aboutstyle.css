@@ -1,0 +1,9 @@
+:root {
+    --main-bg: #504d66;
+    --secondary-bg: #302d56;
+    --text-color: #fdfff0;
+}
+
+.mainheader {
+    font-family: "Calibri", sans-serif;
+}
