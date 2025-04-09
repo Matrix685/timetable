@@ -19,7 +19,6 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 3vmin;
-    place-items: center;
     background-color: #1b1a1d;
 }
 

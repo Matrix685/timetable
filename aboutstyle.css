@@ -4,6 +4,20 @@
     --text-color: #fdfff0;
 }
 
+body {
+    margin: 0in;
+}
+
+.aboutpage {
+    background-color: var(--main-bg);
+    height: 100vh;
+}
+
 .mainheader {
+    font-size: 32px;
     font-family: "Calibri", sans-serif;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    display: grid;
+    place-items: center;
 }
