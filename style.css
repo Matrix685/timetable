@@ -5,10 +5,9 @@
     --hover-bg: #35346a;
 }
 
-/* html {
-    overflow: hidden;
-    scrollbar-gutter: stable;
-} */
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0vmax;
@@ -18,6 +17,7 @@ body {
     padding: 8vmin;
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 3vmin;
     background-color: #1b1a1d;
 }
@@ -47,7 +47,7 @@ h3 {
 }
 
 .timetable {
-    width: 100%;
+    width: min(100%, 16in);
     height: 78vh;
     display: flex;
     flex-direction: column;
@@ -151,7 +151,6 @@ h3 {
     width: 40%;
     display: grid;
     padding: 5vmin 8vmin;
-    box-sizing: border-box;
     color: var(--text-color);
     font-family: "Calibri", sans-serif;
     font-size: 1.9vmin;
@@ -197,10 +196,8 @@ h3 {
 select,
 input,
 #submit {
-    box-sizing: border-box;
     border-radius: 4px;
     background-color: var(--input-bg);
-    font-size: 1.7vmin;
     padding: 1.2vmin;
     border: none;
     color: var(--text-color);
@@ -220,7 +217,7 @@ select:hover,
 }
 
 input {
-    width: 100%;
+    width: min(60%, 20rem);
 }
 
 select {
@@ -244,13 +241,19 @@ input:focus,
     position: fixed;
     inset: 0px;
     background-color: #000a;
-    display: grid;
-    place-items: center;
+    /* display: grid;
+    place-items: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popup {
-    width: 70%;
+    width: 50%;
     height: 60%;
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
 }
 
 #popup-bg[data-hidden="true"] {
@@ -270,7 +273,40 @@ input:focus,
 
 .inputs {
     width: 100%;
+    height: 90%;
+}
+
+.popup-header {
+    /* position: absolute; */
+    width: 100%;
+    height: 10%;
+    background-color: var(--input-bg);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 1.7vmin;
+}
+
+#popup_title {
+    font-size: 2.2vmin;
+    line-height: normal;
+    /* font-weight: bold; */
+}
+
+#escape {
+    height: calc(100% - 3.4vmin);
+    aspect-ratio: 1;
+    background-color: transparent;
+    border: none;
+    padding: 0vmax;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    translate: -50% -50%;
+}
+
+.escape-icon {
     height: 100%;
-    padding: 10vmin 18vmin;
-    box-sizing: border-box;
+    aspect-ratio: 1;
 }

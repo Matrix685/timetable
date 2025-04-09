@@ -93,32 +93,6 @@
             </div>
             <!-- haha! i am here! -->
             <div class="input-box">
-                <div class="selector-box">
-                    <div class="selectors">
-                        <!-- <input type="text" placeholder="Cuir isteach ainm an ábhair" id="text" /> -->
-                        <div class="dropdowns">
-                            <select id="day_selector">
-                                <option value="0">Luain</option>
-                                <option value="1">Máirt</option>
-                                <option value="2">Céadaoin</option>
-                                <option value="3">Déardaoin</option>
-                                <option value="4">Aoine</option>
-                            </select>
-
-                            <select id="period_selector">
-                                <option value="0">1</option>
-                                <option value="1">2</option>
-                                <option value="2">3</option>
-                                <option value="3">4</option>
-                                <option value="4">5</option>
-                                <option value="5">6</option>
-                            </select>
-                        </div>
-
-                        <button id="submit" onclick="buttonClicked()">Críochnaithe</button>
-                    </div>
-                </div>
-
                 <!-- make this a popup maybe?? -->
 
                 <div class="rng">
@@ -148,9 +122,13 @@
         <!-- popup selector box -->
         <div id="popup-bg" data-hidden="true">
             <div class="popup">
-                <button id="escape">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <div class="popup-header">
+                    <button id="escape" onclick="escapeForm()">
+                        <img src="xmark-solid.png" class="escape-icon" />
+                    </button>
+                    <p id="popup_title"></p>
+                </div>
+
                 <div class="inputs">
                     <form id="tile_submit" onsubmit="buttonClicked()">
                         <input type="text" id="subject_input" placeholder="Ábhar" />

@@ -167,8 +167,19 @@ function fixArrays() {
 // console.log(rooms);
 // console.log(roomsAnchor);
 
-let subject, room, subjectSelector, roomSelector;
+let subject, room, subjectSelector, roomSelector, mouseOverPopup;
+
 const popup = document.getElementById("popup-bg");
+const popupWindow = popup.firstElementChild;
+
+popupWindow.onmouseenter = () => (mouseOverPopup = true);
+popupWindow.onmouseleave = () => (mouseOverPopup = false);
+
+popup.onclick = () => {
+    if (!mouseOverPopup) escapeForm();
+};
+
+// document.onmousemove = () => console.log(mouseOverPopup);
 
 function formSubmit(e) {
     e.preventDefault();
@@ -176,17 +187,20 @@ function formSubmit(e) {
     subject.innerHTML = subjectSelector.value;
     room.innerHTML = roomSelector.value;
 
+    escapeForm();
+}
+
+function escapeForm() {
     popup.dataset.hidden = "true";
 }
 
-function escapeForm(e) {
-    if (e.keyCode === 27 && popup.dataset.hidden == "false") popup.dataset.hidden = "true";
-}
+const weekDays = ["Dé Luain", "Dé Máirt", "Dé Céadaoin", "Déardaoin", "Dé hAoine"];
+const times = ["8:30 - 9:28", "9:28 - 10:26", "10:53 - 11:51", "11:51 - 12:49", "13:24 - 14:22", "14:22 - 15:20"];
 
-for (let day of timetable) {
+timetable.forEach((day, dayIndex) => {
     day = day.filter((n) => n.id != "locked");
 
-    day.forEach((n) => {
+    day.forEach((n, index) => {
         n.onclick = (e) => {
             subject = e.target.firstElementChild;
             room = e.target.lastElementChild;
@@ -199,13 +213,17 @@ for (let day of timetable) {
             subjectSelector.value = subject.innerHTML;
             roomSelector.value = room.innerHTML;
 
-            // console.log(e.target);
-            // console.log(e.target.firstElementChild.innerText);
+            const title = document.getElementById("popup_title");
+
+            title.innerHTML = `${weekDays[dayIndex]}, ${times[index]}`;
         };
     });
-}
+});
 
 const form = document.getElementById("tile_submit");
 
 form.onsubmit = (e) => formSubmit(e);
-document.onkeydown = (e) => escapeForm(e);
+
+document.onkeydown = (e) => {
+    if (e.key === "Escape" && popup.dataset.hidden === "false") escapeForm();
+};
