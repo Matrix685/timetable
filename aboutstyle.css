@@ -1,6 +1,6 @@
 :root {
-    --main-bg: #504d66;
-    --secondary-bg: #302d56;
+    --main-bg: #1b1a1d;
+    --secondary-bg: #504d66;
     --text-color: #fdfff0;
 }
 
@@ -14,10 +14,32 @@ body {
 }
 
 .mainheader {
-    font-size: 32px;
     font-family: "Calibri", sans-serif;
-    background-color: var(--secondary-bg);
     color: var(--text-color);
+    background-color: var(--secondary-bg);
     display: grid;
     place-items: center;
+}
+
+h1 {
+    font-size: 56px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 10px;
+}
+
+.article {
+    font-size: 25px;
+    color: var(--text-color);
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 50px;
+}
+
+.paragraph {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
