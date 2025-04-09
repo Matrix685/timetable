@@ -148,10 +148,15 @@
         <!-- popup selector box -->
         <div id="popup-bg" data-hidden="true">
             <div class="popup">
+                <button id="escape">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
                 <div class="inputs">
-                    <input type="text" id="subject_input" />
-                    <input type="text" id="room_input" />
-                    <button id="submit" onclick="buttonClicked()">Críochnaithe</button>
+                    <form id="tile_submit" onsubmit="buttonClicked()">
+                        <input type="text" id="subject_input" placeholder="Ábhar" />
+                        <input type="text" id="room_input" placeholder="Seomra" />
+                        <button id="submit">Críochnaithe</button>
+                    </form>
                 </div>
             </div>
         </div>
