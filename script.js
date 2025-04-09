@@ -108,8 +108,8 @@ let subjects = {
     priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
 
     roghnach: [
-        ["Adhmadóireacht", "Innealtóireacht", "Eac Bhaile"],
-        ["Ealaín", "Graif Teic", "Gnó"],
+        ["Adhmadóireacht", "Innealtóireacht", "Eacnamaíocht Bhaile"],
+        ["Ealaín", "Graific Teicniúil", "Gnó"],
         ["Fisic", "Ceimic", "Bitheolaíocht"],
     ],
 };
