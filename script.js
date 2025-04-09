@@ -23,9 +23,7 @@ let k = 0;
 for (const day of days) {
     let children = Array.from(day.children);
 
-    children = children.filter((n) => {
-        if (n.id !== "locked") return n;
-    });
+    children = children.filter((n) => n.id !== "locked");
 
     let b = [];
 
@@ -53,17 +51,10 @@ for (const day of days) {
     k = 0;
 }
 
-console.log(timetable);
+// let tilesAnchor = [...tiles];
+// console.log(tilesAnchor);
 
-function buttonClicked() {
-    // let daySelector = document.getElementById("day_selector").value,
-    //     periodSelector = document.getElementById("period_selector").value,
-    //     text = document.getElementById("text").value;
-
-    tiles[daySelector][periodSelector].addSubject(text);
-
-    document.getElementById("text").value = "";
-}
+// console.log(timetable);
 
 function removeChosen(array, chosen) {
     array.splice(array.indexOf(chosen), 1);
@@ -133,8 +124,15 @@ subjects.roghnach.forEach((group) => {
     }
 });
 
-console.log(rooms);
-console.log(roomsAnchor);
+// console.log(rooms);
+// console.log(roomsAnchor);
+
+// tiles = tilesAnchor;
+// rooms = roomsAnchor;
+
+// console.log(tiles);
+// console.log(tilesAnchor);
+// console.log(rooms);
 
 fixArrays();
 
@@ -148,9 +146,7 @@ function fixArrays() {
 
         let children = Array.from(day.children);
 
-        children = children.filter((n) => {
-            if (n.id !== "locked") return n;
-        });
+        children = children.filter((n) => n.id !== "locked");
 
         children.map(() => {
             let a = new Tile(l, m);
@@ -171,26 +167,45 @@ function fixArrays() {
 // console.log(rooms);
 // console.log(roomsAnchor);
 
+let subject, room, subjectSelector, roomSelector;
 const popup = document.getElementById("popup-bg");
 
+function formSubmit(e) {
+    e.preventDefault();
+
+    subject.innerHTML = subjectSelector.value;
+    room.innerHTML = roomSelector.value;
+
+    popup.dataset.hidden = "true";
+}
+
+function escapeForm(e) {
+    if (e.keyCode === 27 && popup.dataset.hidden == "false") popup.dataset.hidden = "true";
+}
+
 for (let day of timetable) {
-    // day = day.filter((n) => {
-    //     if (n.id !== "locked") return n;
-    // });
     day = day.filter((n) => n.id != "locked");
 
-    day.forEach((n, index) => {
+    day.forEach((n) => {
         n.onclick = (e) => {
+            subject = e.target.firstElementChild;
+            room = e.target.lastElementChild;
+
             popup.dataset.hidden = "false";
 
-            const subjectSelector = document.getElementById("subject_input");
-            const roomSelector = document.getElementById("room_input");
+            subjectSelector = document.getElementById("subject_input");
+            roomSelector = document.getElementById("room_input");
 
-            subjectSelector.value = e.target.firstElementChild.innerText;
-            roomSelector.value = e.target.lastElementChild.innerText;
+            subjectSelector.value = subject.innerHTML;
+            roomSelector.value = room.innerHTML;
 
             // console.log(e.target);
             // console.log(e.target.firstElementChild.innerText);
         };
     });
 }
+
+const form = document.getElementById("tile_submit");
+
+form.onsubmit = (e) => formSubmit(e);
+document.onkeydown = (e) => escapeForm(e);
