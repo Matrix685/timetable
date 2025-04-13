@@ -6,11 +6,12 @@
 
 body {
     margin: 0in;
+    background-color: var(--main-bg);
 }
 
 .aboutpage {
     background-color: var(--main-bg);
-    height: 100vh;
+    height: 100%;
 }
 
 .mainheader {
@@ -42,4 +43,5 @@ h2 {
 .paragraph {
     padding-top: 8px;
     padding-bottom: 8px;
+    font-family: "Calibri", sans-serif;
 }
