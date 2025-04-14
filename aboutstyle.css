@@ -23,9 +23,25 @@ body {
 }
 
 h1 {
-    font-size: 56px;
-    margin: 20px;
+    font-size: 8vmin;
+    background: linear-gradient(135deg, magenta, mediumblue, magenta);
+    background-clip: text;
+    color: transparent;
+    background-size: 200%;
+    animation: gradientPan 10s linear infinite;
 }
+
+/* surely i can just rip code from the main page and nothing will go wrong
+surely that is the case */
+@keyframes gradientPan {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
+/* well the keyframes didn't fail but basically everything else did */
 
 h2 {
     font-size: 24px;
@@ -33,7 +49,7 @@ h2 {
 }
 
 .article {
-    font-size: 25px;
+    font-size: 3vh;
     color: var(--text-color);
     margin-left: 10vw;
     margin-right: 10vw;
