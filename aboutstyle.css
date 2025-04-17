@@ -24,11 +24,11 @@ body {
 
 h1 {
     font-size: 8vmin;
-    background: linear-gradient(135deg, magenta, mediumblue, magenta);
+    background: linear-gradient(135deg, magenta, dodgerblue, magenta);
     background-clip: text;
     color: transparent;
     background-size: 200%;
-    animation: gradientPan 10s linear infinite;
+    animation: gradientPan 30s linear infinite;
 }
 
 /* surely i can just rip code from the main page and nothing will go wrong
