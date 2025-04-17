@@ -37,6 +37,11 @@ h3 {
     animation: pan 5s infinite linear;
 }
 
+.about {
+    height: 100%;
+    width: 100%;
+}
+
 @keyframes pan {
     from {
         background-position: 0% center;
