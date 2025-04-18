@@ -53,7 +53,7 @@ h2 {
     color: var(--text-color);
     margin-left: 10vw;
     margin-right: 10vw;
-    margin-top: 50px;
+    margin-top: 10vh;
 }
 
 .paragraph {
@@ -77,4 +77,15 @@ a {
 
 a:visited {
     color: var(--text-color);
+}
+
+.textvisuals {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    row-gap: 3%;
+    column-gap: 20%;
+}
+
+.textvisuals > .right {
+    text-align: right;
 }
