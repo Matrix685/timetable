@@ -120,7 +120,7 @@ h3 {
 
 .rows {
     cursor: pointer;
-    transition: all .15s ease-in-out;
+    transition: all 10ms ease-in-out;
 }
 
 .rows:hover {

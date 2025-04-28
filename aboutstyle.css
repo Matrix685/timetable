@@ -49,7 +49,7 @@ h2 {
 }
 
 .article {
-    font-size: 3vh;
+    font-size: 3vmin;
     color: var(--text-color);
     margin-left: 10vw;
     margin-right: 10vw;
@@ -73,6 +73,7 @@ h2 {
 a {
     color: var(--text-color);
     text-shadow: 0 0 1vmin var(--text-color);
+    text-decoration: none;
 }
 
 a:visited {
@@ -84,6 +85,7 @@ a:visited {
     grid-template-columns: 40% 40%;
     row-gap: 3%;
     column-gap: 20%;
+    margin-bottom: 28vmin;
 }
 
 .textvisuals > .right {
