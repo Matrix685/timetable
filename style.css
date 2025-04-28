@@ -28,6 +28,10 @@ h3 {
     margin: 0px;
     line-height: 2vmin;
     font-family: "Calibri", sans-serif;
+}
+
+#subject,
+#room {
     pointer-events: none;
 }
 
