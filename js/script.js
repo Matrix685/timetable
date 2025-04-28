@@ -1,4 +1,4 @@
-import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "../modules/timetable.js";
+import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "file:///C:/Users/Matrix/Documents/Coding/timetable/modules/timetable.mjs";
 
 // let tilesAnchor = [...tiles];
 // console.log(tilesAnchor);
