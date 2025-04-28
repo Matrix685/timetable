@@ -1,4 +1,4 @@
-import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "../modules/timetable.mjs";
+import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "../modules/timetable.js";
 
 // let tilesAnchor = [...tiles];
 // console.log(tilesAnchor);
