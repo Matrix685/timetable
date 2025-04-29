@@ -1,5 +1,5 @@
 import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "../modules/timetable.js";
-import { tileClicked } from "../modules/popup.js";
+import { tileClicked, escapeForm } from "../modules/popup.js";
 
 let subjects = {
     priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
@@ -45,3 +45,5 @@ timetable.forEach((day, dayIndex) => {
         };
     });
 });
+
+document.getElementById("escape").onclick = escapeForm();
