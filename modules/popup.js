@@ -44,4 +44,4 @@ document.onkeydown = (e) => {
     if (e.key === "Escape" && popup.dataset.hidden === "false") escapeForm();
 };
 
-export { tileClicked };
+export { tileClicked, escapeForm };
