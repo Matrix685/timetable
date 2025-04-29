@@ -6,7 +6,7 @@ const popupWindow = popup.firstElementChild;
 popupWindow.onmouseenter = () => (mouseOverPopup = true);
 popupWindow.onmouseleave = () => (mouseOverPopup = false);
 
-popup.onclick = () => {
+popup.onmousedown = () => {
     if (!mouseOverPopup) escapeForm();
 };
 
