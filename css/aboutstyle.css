@@ -85,7 +85,7 @@ a:visited {
     grid-template-columns: 40% 40%;
     row-gap: 3%;
     column-gap: 20%;
-    margin-bottom: 28vmin;
+    /* margin-bottom: 28vmin; */
 }
 
 .textvisuals > .right {
