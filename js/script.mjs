@@ -49,3 +49,5 @@ timetable.forEach((day, dayIndex) => {
 function escapeForm() {
     popup.dataset.hidden = "true";
 }
+
+document.getElementById("escape").addEventListener("click", escapeForm);
