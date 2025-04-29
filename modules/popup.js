@@ -30,3 +30,5 @@ form.onsubmit = (e) => formSubmit(e);
 document.onkeydown = (e) => {
     if (e.key === "Escape" && popup.dataset.hidden === "false") escapeForm();
 };
+
+export { subject, room, subjectSelector, roomSelector };
