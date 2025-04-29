@@ -10,6 +10,19 @@ popup.onclick = () => {
     if (!mouseOverPopup) escapeForm();
 };
 
+function tileClicked(e) {
+    subject = e.target.firstElementChild;
+    room = e.target.lastElementChild;
+
+    popup.dataset.hidden = "false";
+
+    subjectSelector = document.getElementById("subject_input");
+    roomSelector = document.getElementById("room_input");
+
+    subjectSelector.value = subject.innerHTML;
+    roomSelector.value = room.innerHTML;
+}
+
 function formSubmit(e) {
     e.preventDefault();
 
@@ -31,4 +44,4 @@ document.onkeydown = (e) => {
     if (e.key === "Escape" && popup.dataset.hidden === "false") escapeForm();
 };
 
-export { subject, room, subjectSelector, roomSelector };
+export { tileClicked };
