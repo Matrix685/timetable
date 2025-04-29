@@ -47,6 +47,8 @@ timetable.forEach((day, dayIndex) => {
 });
 
 function escapeForm() {
+    const popup = document.getElementById("popup-bg");
+
     popup.dataset.hidden = "true";
 }
 
