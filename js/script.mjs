@@ -1,4 +1,5 @@
-import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "../modules/timetable.js";
+import { timetable, chooseRandRoom, chooseRandTile, fixArrays } from "/modules/timetable.js";
+import { subject, room, subjectSelector, roomSelector } from "/modules/popup.js";
 
 // let tilesAnchor = [...tiles];
 // console.log(tilesAnchor);

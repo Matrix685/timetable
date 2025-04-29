@@ -267,8 +267,7 @@ input:focus,
 }
 
 #popup-bg[data-hidden="true"] {
-    opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
 #tile_submit {
