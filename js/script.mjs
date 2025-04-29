@@ -46,10 +46,10 @@ timetable.forEach((day, dayIndex) => {
     });
 });
 
-function escapeForm() {
-    const popup = document.getElementById("popup-bg");
+// function escapeForm() {
+//     const popup = document.getElementById("popup-bg");
 
-    popup.dataset.hidden = "true";
-}
+//     popup.dataset.hidden = "true";
+// }
 
-document.getElementById("escape").addEventListener("click", escapeForm);
+// document.getElementById("escape").addEventListener("click", escapeForm);
