@@ -58,10 +58,6 @@ function removeChosen(array, chosen) {
 }
 
 function rand(array) {
-    // let rand = Math.floor(Math.random() * array.length);
-    // console.log(rand);
-    // console.log(array[rand]);
-
     return array[Math.floor(Math.random() * array.length)];
 }
 
@@ -76,22 +72,45 @@ function chooseRandTile() {
     // WEAKLING
     // WAAAAAAAAAAAA
 
-    // console.log(`randDay: ${randDay.length}`);
-    // console.log(`tiles: ${tiles.length}`);
-
     let randPeriod = rand(randDay);
 
     return removeChosen(randDay, randPeriod);
 }
 
 function chooseRandRoom() {
-    // let chosen = rand(rooms);
-
     return removeChosen(rooms, rand(rooms));
 }
 
+let subjects = {
+    priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
+
+    roghnach: [
+        ["Adhmadóireacht", "Innealtóireacht", "Eacnamaíocht Bhaile"],
+        ["Ealaín", "Graific Teicniúil", "Gnó"],
+        ["Fisic", "Ceimic", "Bitheolaíocht"],
+    ],
+};
+
 let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12", "S13", "S14", "S15"];
 let roomsAnchor = [...rooms];
+
+subjects.priomha.forEach((subject) => {
+    let chosen = chooseRandTile();
+
+    chosen.addSubject(subject);
+    chosen.addRoom(chooseRandRoom());
+});
+
+subjects.roghnach.forEach((group) => {
+    for (const subject of group) {
+        let chosen = chooseRandTile();
+
+        chosen.addSubject(subject);
+        chosen.addRoom(chooseRandRoom());
+    }
+});
+
+fixArrays();
 
 function fixArrays() {
     tiles = [];
@@ -121,4 +140,4 @@ function fixArrays() {
     rooms = roomsAnchor;
 }
 
-export { timetable, chooseRandRoom, chooseRandTile, fixArrays };
+export { timetable };
