@@ -1,1 +1,1 @@
-<a href="index.html">time.</a>
+<a href="matrix685.github.io/timetable">time.</a>
