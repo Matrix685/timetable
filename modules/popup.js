@@ -10,7 +10,7 @@ popup.onmousedown = () => {
     if (!mouseOverPopup) escapeForm();
 };
 
-function tileClicked(e) {
+function commencePopup(e) {
     subject = e.target.firstElementChild;
     room = e.target.lastElementChild;
 
@@ -46,4 +46,4 @@ document.onkeydown = (e) => {
 
 document.getElementById("escape").addEventListener("click", escapeForm);
 
-export { tileClicked };
+export { commencePopup };
