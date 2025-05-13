@@ -118,7 +118,7 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100% / 6);
+    height: calc(100% / 6) * var(--examLength);
     border-bottom: 1px solid var(--text-color);
 }
 

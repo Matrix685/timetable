@@ -4,12 +4,17 @@ function Tile(day, period) {
     this.day = day;
     this.period = period;
 
-    this.addSubject = function (text) {
-        timetable[this.day][this.period].firstElementChild.innerHTML = text;
+    this.addSubject = function (text, examLength) {
+        const tile = timetable[this.day][this.period];
+
+        tile.firstElementChild.innerHTML = text;
+        tile.style.setProperty("--examLength", examLength);
     };
 
     this.addRoom = function (text) {
-        timetable[this.day][this.period].lastElementChild.innerHTML = text;
+        const tile = timetable[this.day][this.period];
+
+        tile.lastElementChild.innerHTML = text;
     };
 }
 
@@ -81,10 +86,38 @@ function chooseRandRoom() {
     return removeChosen(rooms, rand(rooms));
 }
 
+// let subjects = {
+//     priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
+
+//     roghnach: [
+//         ["Adhmadóireacht", "Innealtóireacht", "Eacnamaíocht Bhaile"],
+//         ["Ealaín", "Graific Teicniúil", "Gnó"],
+//         ["Fisic", "Ceimic", "Bitheolaíocht"],
+//     ],
+// };
+
 let subjects = {
-    priomha: ["Béarla", "Gaeilge", "Mata", "Géarmáinis/<br />Fraincis"], // i'm sowwy 3:
+    priomha: [
+        {
+            name: "Béarla",
+            examLength: 2, // length in hours (this might be a problem)
+        },
+        {
+            name: "Gaeilge",
+            examLength: 1, // length in hours
+        },
+        {
+            name: "Mata",
+            examLength: 1.5, // length in hours (this, too, might be a problem)
+        },
+        {
+            name: "Géarmáinis/<br />Fraincis",
+            examLength: 1, // length in hours
+        },
+    ],
 
     roghnach: [
+        // figure this out later
         ["Adhmadóireacht", "Innealtóireacht", "Eacnamaíocht Bhaile"],
         ["Ealaín", "Graific Teicniúil", "Gnó"],
         ["Fisic", "Ceimic", "Bitheolaíocht"],
@@ -97,7 +130,7 @@ let roomsAnchor = [...rooms];
 subjects.priomha.forEach((subject) => {
     let chosen = chooseRandTile();
 
-    chosen.addSubject(subject);
+    chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
 });
 
