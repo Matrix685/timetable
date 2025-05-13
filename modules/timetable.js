@@ -8,7 +8,7 @@ function Tile(day, period) {
         const tile = timetable[this.day][this.period];
 
         tile.firstElementChild.innerHTML = text;
-        tile.style.setProperty("--examLength", examLength);
+        tile.style.setProperty("--exam-length", examLength);
     };
 
     this.addRoom = function (text) {
@@ -138,7 +138,7 @@ subjects.roghnach.forEach((group) => {
     for (const subject of group) {
         let chosen = chooseRandTile();
 
-        chosen.addSubject(subject);
+        chosen.addSubject(subject, 1); // just for now
         chosen.addRoom(chooseRandRoom());
     }
 });
