@@ -322,3 +322,26 @@ input:focus,
     top: 50%;
     transform: translateY(-50%);
 }
+
+.rows {
+    display: grid;
+    grid-template-rows: 50% 0% 50% 0%;
+    grid-template-columns: 100%;
+    place-items: center;
+}
+
+.half-hours {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.period-1 {
+    grid-row: 1 / span 2;
+}
+
+.period-2 {
+    grid-row: 3 / span 4;
+}
