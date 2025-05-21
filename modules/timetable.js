@@ -31,7 +31,7 @@ for (const day of days) {
     // children = children.filter((n) => n.id !== "locked");
 
     let b = [];
-    let p = [];
+    // let p = [];
     let v = [];
 
     children.map((n) => {
@@ -59,9 +59,9 @@ for (const day of days) {
         }
     });
 
-    p.push(v);
+    // p.push(v);
 
-    timetable[i] = p;
+    timetable[i] = v;
     tiles.push(b);
 
     i++;
