@@ -57,11 +57,13 @@ for (const day of days) {
             k++;
         }
 
+        console.log(`%c${b}`, "#f00");
+
         p.push(b);
     });
 
     // v.push(p);
-    console.log(p);
+    console.log(`%c${p}`, "#0f0");
 
     timetable[i] = children;
     tiles.push(p);
