@@ -21,24 +21,21 @@ function Tile(day, period) {
 let timetable = [];
 let tiles = [];
 
-let i = 0;
-let j = 0;
-let k = 0;
+// let i = 0;
+let dayTracker = 0;
+let periodTracker = 0;
 
 for (const day of days) {
-    let children = Array.from(day.children);
+    let children = Array.from(day.children); // array of row-groups
 
-    // children = children.filter((n) => n.id !== "locked");
+    let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
 
-    let p = [];
-    let v = [];
+    children.forEach((rowGroup) => {
+        let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
 
-    children.map((n) => {
-        let b = [];
-
-        for (let l = 0; l < 2; l++) {
+        for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
-            row.classList.add("rows");
+            row.classList.add("row");
 
             let subject = document.createElement("p");
             subject.id = "subject";
@@ -49,31 +46,79 @@ for (const day of days) {
             row.appendChild(subject);
             row.appendChild(room);
 
-            n.appendChild(row);
+            rowGroup.appendChild(row);
 
-            let a = new Tile(j, k);
-            b.push(a);
+            let a = new Tile(dayTracker, periodTracker);
+            correspondingTiles.push(a);
 
-            k++;
+            periodTracker++;
         }
 
-        console.log("%cB ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-        console.log(b);
+        console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
+        console.log(correspondingTiles);
 
-        p.push(b);
+        correspondingGroup.push(correspondingTiles);
     });
 
-    // v.push(p);
-    console.log("%cP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-    console.log(p);
+    console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
+    console.log(correspondingGroup);
 
-    timetable[i] = children;
-    tiles.push(p);
+    timetable.push(children);
+    tiles.push(correspondingGroup);
 
-    i++;
-    j++;
-    k = 0;
+    dayTracker++;
+    periodTracker = 0;
 }
+
+// for (const day of days) {
+//     let children = Array.from(day.children);
+
+//     // children = children.filter((n) => n.id !== "locked");
+
+//     let p = [];
+//     let v = [];
+
+//     children.map((n) => {
+//         let b = [];
+
+//         for (let l = 0; l < 2; l++) {
+//             let row = document.createElement("div");
+//             row.classList.add("rows");
+
+//             let subject = document.createElement("p");
+//             subject.id = "subject";
+
+//             let room = document.createElement("p");
+//             room.id = "room";
+
+//             row.appendChild(subject);
+//             row.appendChild(room);
+
+//             n.appendChild(row);
+
+//             let a = new Tile(j, k);
+//             b.push(a);
+
+//             k++;
+//         }
+
+//         console.log("%cB ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
+//         console.log(b);
+
+//         p.push(b);
+//     });
+
+//     // v.push(p);
+//     console.log("%cP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
+//     console.log(p);
+
+//     timetable[i] = children;
+//     tiles.push(p);
+
+//     i++;
+//     j++;
+//     k = 0;
+// }
 
 console.log(timetable);
 console.log(tiles);
