@@ -5,14 +5,14 @@ function Tile(day, period) {
     this.period = period;
 
     this.addSubject = function (text, examLength) {
-        const tile = timetable[this.day][this.period];
+        const tile = timetable[this.day][this.period].firstElementChild;
 
         tile.firstElementChild.innerHTML = text;
         tile.style.setProperty("--exam-length", examLength);
     };
 
     this.addRoom = function (text) {
-        const tile = timetable[this.day][this.period];
+        const tile = timetable[this.day][this.period].firstElementChild;
 
         tile.lastElementChild.innerHTML = text;
     };
