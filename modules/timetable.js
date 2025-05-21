@@ -26,10 +26,10 @@ let dayTracker = 0;
 let periodTracker = 0;
 let l = 0;
 
+let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
+
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
-
-    let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
 
     children.forEach((rowGroup) => {
         let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
@@ -67,6 +67,8 @@ for (const day of days) {
     timetable.push(children);
     // tiles.push(correspondingGroup);
     tiles[l] = correspondingGroup;
+
+    correspondingGroup = [];
 
     l++;
     dayTracker++;
