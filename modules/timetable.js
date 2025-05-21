@@ -31,7 +31,7 @@ for (const day of days) {
     // children = children.filter((n) => n.id !== "locked");
 
     let b = [];
-    // let p = [];
+    let p = [];
     let v = [];
 
     children.map((n) => {
@@ -57,12 +57,14 @@ for (const day of days) {
 
             k++;
         }
+
+        p.push(b);
     });
 
     // p.push(v);
 
-    timetable[i] = v;
-    tiles.push(b);
+    timetable[i] = children;
+    tiles.push(p);
 
     i++;
     j++;
@@ -93,9 +95,9 @@ function chooseRandTile() {
     // WEAKLING
     // WAAAAAAAAAAAA
 
-    let randPeriod = rand(randDay);
+    let randGroup = rand(randDay);
 
-    return removeChosen(randDay, randPeriod);
+    return removeChosen(randDay, randGroup);
 }
 
 function chooseRandRoom() {
@@ -144,7 +146,7 @@ let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7",
 let roomsAnchor = [...rooms];
 
 subjects.priomha.forEach((subject) => {
-    let chosen = chooseRandTile();
+    let chosen = chooseRandTile()[0];
 
     chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
@@ -152,7 +154,7 @@ subjects.priomha.forEach((subject) => {
 
 subjects.roghnach.forEach((group) => {
     for (const subject of group) {
-        let chosen = chooseRandTile();
+        let chosen = chooseRandTile()[0];
 
         chosen.addSubject(subject, 1); // just for now
         chosen.addRoom(chooseRandRoom());

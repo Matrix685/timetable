@@ -85,8 +85,9 @@ h3 {
 .day {
     background-color: #7d758e;
     font-size: 1.9vmin;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .day,
@@ -105,7 +106,6 @@ h3 {
 
 .classes,
 .times {
-    display: flex;
     flex-direction: column;
     width: calc(100% / 6);
 }
