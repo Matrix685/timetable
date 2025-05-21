@@ -68,6 +68,7 @@ for (const day of days) {
     // tiles.push(correspondingGroup);
     tiles[l] = correspondingGroup;
 
+    l++;
     dayTracker++;
     periodTracker = 0;
 }
