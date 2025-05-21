@@ -30,7 +30,8 @@ for (const day of days) {
 
     // children = children.filter((n) => n.id !== "locked");
 
-    let b = (p = []);
+    let b = [];
+    let p = [];
 
     children.map((n) => {
         let v = [];
