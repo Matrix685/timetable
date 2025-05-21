@@ -24,6 +24,7 @@ let tiles = [];
 // let i = 0;
 let dayTracker = 0;
 let periodTracker = 0;
+let l = 0;
 
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
@@ -35,7 +36,7 @@ for (const day of days) {
 
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
-            row.classList.add("row");
+            row.classList.add("rows");
 
             let subject = document.createElement("p");
             subject.id = "subject";
@@ -64,7 +65,8 @@ for (const day of days) {
     console.log(correspondingGroup);
 
     timetable.push(children);
-    tiles.push(correspondingGroup);
+    // tiles.push(correspondingGroup);
+    tiles[l] = correspondingGroup;
 
     dayTracker++;
     periodTracker = 0;
