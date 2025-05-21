@@ -58,9 +58,9 @@ for (const day of days) {
 
             k++;
         }
-
-        p.push(v);
     });
+
+    p.push(v);
 
     timetable[i] = p;
     tiles.push(b);
