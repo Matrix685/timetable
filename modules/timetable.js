@@ -22,17 +22,17 @@ let timetable = [];
 let tiles = [];
 
 // let i = 0;
-let dayTracker = 0;
-let periodTracker = 0;
-let l = 0;
+// let dayTracker = 0;
+// let periodTracker = 0;
+// let l = 0;
 
-let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
+// let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
 
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
 
     children.forEach((rowGroup) => {
-        let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
+        // let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
 
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
@@ -49,28 +49,54 @@ for (const day of days) {
 
             rowGroup.appendChild(row);
 
+            // let a = new Tile(dayTracker, periodTracker);
+            // correspondingTiles.push(a);
+
+            // periodTracker++;
+        }
+
+        // console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
+        // console.log(correspondingTiles);
+
+        // correspondingGroup.push(correspondingTiles);
+    });
+
+    // console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
+    // console.log(correspondingGroup);
+
+    timetable.push(children);
+    // tiles.push(correspondingGroup);
+    // tiles[l] = correspondingGroup;
+
+    // correspondingGroup = [];
+
+    // l++;
+    // dayTracker++;
+    // periodTracker = 0;
+}
+
+let dayTracker = 0;
+let periodTracker = 0;
+
+for (let i = 0; i < 5; i++) {
+    let correspondingGroups = [];
+
+    for (let j = 0; j < 3; j++) {
+        let correspondingTiles = [];
+
+        for (k = 0; k < 2; k++) {
             let a = new Tile(dayTracker, periodTracker);
+
             correspondingTiles.push(a);
 
             periodTracker++;
         }
 
-        console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-        console.log(correspondingTiles);
+        correspondingGroups.push(correspondingTiles);
+    }
 
-        correspondingGroup.push(correspondingTiles);
-    });
+    tiles.push(correspondingGroups);
 
-    console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-    console.log(correspondingGroup);
-
-    timetable.push(children);
-    // tiles.push(correspondingGroup);
-    tiles[l] = correspondingGroup;
-
-    correspondingGroup = [];
-
-    l++;
     dayTracker++;
     periodTracker = 0;
 }
