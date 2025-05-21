@@ -194,21 +194,23 @@ let subjects = {
 let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12", "S13", "S14", "S15"];
 let roomsAnchor = [...rooms];
 
-// subjects.priomha.forEach((subject) => {
-//     let chosen = chooseRandTile()[0];
+subjects.priomha.forEach((subject) => {
+    let chosen = chooseRandTile()[0];
 
-//     chosen.addSubject(subject.name, subject.examLength);
-//     chosen.addRoom(chooseRandRoom());
-// });
+    console.log(chosen);
 
-// subjects.roghnach.forEach((group) => {
-//     for (const subject of group) {
-//         let chosen = chooseRandTile()[0];
+    chosen.addSubject(subject.name, subject.examLength);
+    chosen.addRoom(chooseRandRoom());
+});
 
-//         chosen.addSubject(subject, 1); // just for now
-//         chosen.addRoom(chooseRandRoom());
-//     }
-// });
+subjects.roghnach.forEach((group) => {
+    for (const subject of group) {
+        let chosen = chooseRandTile()[0];
+
+        chosen.addSubject(subject, 1); // just for now
+        chosen.addRoom(chooseRandRoom());
+    }
+});
 
 // fixArrays();
 
