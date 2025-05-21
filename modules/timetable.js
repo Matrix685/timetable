@@ -57,13 +57,15 @@ for (const day of days) {
             k++;
         }
 
-        console.log(`%c${b}`, "#f00");
+        console.log("%cB ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
+        console.log(b);
 
         p.push(b);
     });
 
     // v.push(p);
-    console.log(`%c${p}`, "#0f0");
+    console.log("%cP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
+    console.log(p);
 
     timetable[i] = children;
     tiles.push(p);
