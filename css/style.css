@@ -85,12 +85,12 @@ h3 {
 .day {
     background-color: #7d758e;
     font-size: 1.9vmin;
+    display: grid;
+    place-items: center;
 }
 
 .day,
 .classes {
-    display: grid;
-    place-items: center;
     border-left: 1px solid var(--text-color);
     text-align: center;
     width: calc(100% / 6);
@@ -98,7 +98,7 @@ h3 {
 
 .day:nth-child(1),
 .classes:nth-child(1),
-.classes > .rows:nth-child(6),
+.row-group:nth-child(3) > .rows:nth-child(2),
 .times > .time-rows:nth-child(6) {
     border: none;
 }
@@ -118,8 +118,13 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc((100% / 6) * var(--exam-length));
+    height: calc(50% * var(--exam-length));
     border-bottom: 1px solid var(--text-color);
+}
+
+.row-group {
+    height: calc(100% / 3);
+    width: 100%;
 }
 
 .rows {
@@ -323,7 +328,7 @@ input:focus,
     transform: translateY(-50%);
 }
 
-.rows {
+/* .rows {
     display: grid;
     grid-template-rows: 50% 0% 50% 0%;
     grid-template-columns: 100%;
@@ -344,4 +349,4 @@ input:focus,
 
 .period-2 {
     grid-row: 3 / span 4;
-}
+} */
