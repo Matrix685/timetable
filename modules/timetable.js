@@ -84,7 +84,7 @@ for (let i = 0; i < 5; i++) {
     for (let j = 0; j < 3; j++) {
         let correspondingTiles = [];
 
-        for (k = 0; k < 2; k++) {
+        for (let k = 0; k < 2; k++) {
             let a = new Tile(dayTracker, periodTracker);
 
             correspondingTiles.push(a);
