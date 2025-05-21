@@ -32,10 +32,9 @@ for (const day of days) {
 
     let b = [];
     let p = [];
+    let v = [];
 
     children.map((n) => {
-        let v = [];
-
         for (let l = 0; l < 2; l++) {
             let row = document.createElement("div");
             row.classList.add("rows");
