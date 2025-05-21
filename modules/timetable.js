@@ -35,7 +35,7 @@ for (const day of days) {
 
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
-            row.classList.add("row");
+            row.classList.add("rows");
 
             let subject = document.createElement("p");
             subject.id = "subject";
@@ -210,7 +210,7 @@ let roomsAnchor = [...rooms];
 //     }
 // });
 
-fixArrays();
+// fixArrays();
 
 function fixArrays() {
     tiles = [];
