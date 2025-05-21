@@ -60,10 +60,11 @@ for (const day of days) {
         p.push(b);
     });
 
-    v.push(p);
+    // v.push(p);
+    console.log(p);
 
     timetable[i] = children;
-    tiles.push(v);
+    tiles.push(p);
 
     i++;
     j++;
