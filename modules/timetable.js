@@ -51,8 +51,6 @@ for (const day of days) {
 
             n.appendChild(row);
 
-            v.push(row);
-
             let a = new Tile(j, k);
             b.push(a);
 
