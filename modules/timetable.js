@@ -28,33 +28,49 @@ let k = 0;
 for (const day of days) {
     let children = Array.from(day.children);
 
-    children = children.filter((n) => n.id !== "locked");
+    // children = children.filter((n) => n.id !== "locked");
 
-    let b = [];
+    let b = (p = []);
 
     children.map((n) => {
-        let subject = document.createElement("p");
-        subject.id = "subject";
+        let v = [];
 
-        let room = document.createElement("p");
-        room.id = "room";
+        for (let l = 0; l < 2; l++) {
+            let row = document.createElement("div");
+            row.classList.add("rows");
 
-        n.appendChild(subject);
-        n.appendChild(room);
+            let subject = document.createElement("p");
+            subject.id = "subject";
 
-        let a = new Tile(j, k);
-        b.push(a);
+            let room = document.createElement("p");
+            room.id = "room";
 
-        k++;
+            row.appendChild(subject);
+            row.appendChild(room);
+
+            n.appendChild(row);
+
+            v.push(row);
+
+            let a = new Tile(j, k);
+            b.push(a);
+
+            k++;
+        }
+
+        p.push(v);
     });
 
-    timetable[i] = children;
+    timetable[i] = p;
     tiles.push(b);
 
     i++;
     j++;
     k = 0;
 }
+
+console.log(timetable);
+console.log(tiles);
 
 function removeChosen(array, chosen) {
     array.splice(array.indexOf(chosen), 1);
