@@ -21,20 +21,21 @@ function Tile(day, period) {
 let timetable = [];
 let tiles = [];
 
-// let i = 0;
-// let dayTracker = 0;
-// let periodTracker = 0;
-// let l = 0;
-
-// let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
+let i = 0;
+let j = 0;
+let k = 0;
 
 for (const day of days) {
-    let children = Array.from(day.children); // array of row-groups
+    let children = Array.from(day.children);
 
-    children.forEach((rowGroup) => {
-        // let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
+    // children = children.filter((n) => n.id !== "locked");
 
-        for (let i = 0; i < 2; i++) {
+    let b = [];
+    // let p = [];
+    let v = [];
+
+    children.map((n) => {
+        for (let l = 0; l < 2; l++) {
             let row = document.createElement("div");
             row.classList.add("rows");
 
@@ -47,109 +48,26 @@ for (const day of days) {
             row.appendChild(subject);
             row.appendChild(room);
 
-            rowGroup.appendChild(row);
+            n.appendChild(row);
 
-            // let a = new Tile(dayTracker, periodTracker);
-            // correspondingTiles.push(a);
+            v.push(row);
 
-            // periodTracker++;
+            let a = new Tile(j, k);
+            b.push(a);
+
+            k++;
         }
-
-        // console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-        // console.log(correspondingTiles);
-
-        // correspondingGroup.push(correspondingTiles);
     });
 
-    // console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-    // console.log(correspondingGroup);
+    // p.push(v);
 
-    timetable.push(children);
-    // tiles.push(correspondingGroup);
-    // tiles[l] = correspondingGroup;
+    timetable[i] = v;
+    tiles.push(b);
 
-    // correspondingGroup = [];
-
-    // l++;
-    // dayTracker++;
-    // periodTracker = 0;
+    i++;
+    j++;
+    k = 0;
 }
-
-let dayTracker = 0;
-let periodTracker = 0;
-
-for (let i = 0; i < 5; i++) {
-    let correspondingGroups = [];
-
-    for (let j = 0; j < 3; j++) {
-        let correspondingTiles = [];
-
-        for (let k = 0; k < 2; k++) {
-            let a = new Tile(dayTracker, periodTracker);
-
-            correspondingTiles.push(a);
-
-            periodTracker++;
-        }
-
-        correspondingGroups.push(correspondingTiles);
-    }
-
-    tiles.push(correspondingGroups);
-
-    dayTracker++;
-    periodTracker = 0;
-}
-
-// for (const day of days) {
-//     let children = Array.from(day.children);
-
-//     // children = children.filter((n) => n.id !== "locked");
-
-//     let p = [];
-//     let v = [];
-
-//     children.map((n) => {
-//         let b = [];
-
-//         for (let l = 0; l < 2; l++) {
-//             let row = document.createElement("div");
-//             row.classList.add("rows");
-
-//             let subject = document.createElement("p");
-//             subject.id = "subject";
-
-//             let room = document.createElement("p");
-//             room.id = "room";
-
-//             row.appendChild(subject);
-//             row.appendChild(room);
-
-//             n.appendChild(row);
-
-//             let a = new Tile(j, k);
-//             b.push(a);
-
-//             k++;
-//         }
-
-//         console.log("%cB ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-//         console.log(b);
-
-//         p.push(b);
-//     });
-
-//     // v.push(p);
-//     console.log("%cP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-//     console.log(p);
-
-//     timetable[i] = children;
-//     tiles.push(p);
-
-//     i++;
-//     j++;
-//     k = 0;
-// }
 
 console.log(timetable);
 console.log(tiles);
@@ -175,9 +93,9 @@ function chooseRandTile() {
     // WEAKLING
     // WAAAAAAAAAAAA
 
-    let randGroup = rand(randDay);
+    let randPeriod = rand(randDay);
 
-    return removeChosen(randDay, randGroup);
+    return removeChosen(randDay, randPeriod);
 }
 
 function chooseRandRoom() {
@@ -226,7 +144,7 @@ let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7",
 let roomsAnchor = [...rooms];
 
 subjects.priomha.forEach((subject) => {
-    let chosen = chooseRandTile()[0];
+    let chosen = chooseRandTile();
 
     chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
@@ -234,7 +152,7 @@ subjects.priomha.forEach((subject) => {
 
 subjects.roghnach.forEach((group) => {
     for (const subject of group) {
-        let chosen = chooseRandTile()[0];
+        let chosen = chooseRandTile();
 
         chosen.addSubject(subject, 1); // just for now
         chosen.addRoom(chooseRandRoom());
