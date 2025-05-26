@@ -9,13 +9,13 @@ function Tile(day, group, period) {
         // const tile = timetable[this.day][this.period].firstElementChild;
         const group = timetable[this.day][this.group];
 
-        group[0].firstElementChild.innerHTML = text;
+        group.firstElementChild.firstElementChild.innerHTML = text;
         // tile.style.setProperty("--exam-length", examLength);
         let tileHeight = 50 * examLength;
         let responsiveHeight = 100 - tileHeight;
 
-        group[0].style.height = `${tileHeight}%`;
-        group[1].style.height = `${responsiveHeight}%`;
+        group.firstElementChild.style.height = `${tileHeight}%`;
+        group.lastElementChild.style.height = `${responsiveHeight}%`;
     };
 
     this.addRoom = function (text) {
