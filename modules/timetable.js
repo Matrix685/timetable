@@ -32,10 +32,10 @@ for (const day of days) {
 
     let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
     let periodTracker = 0;
+    let groupTracker = 0;
 
     children.forEach((rowGroup) => {
         let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
-        let groupTracker = 0;
 
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
@@ -55,9 +55,10 @@ for (const day of days) {
             let a = new Tile(dayTracker, groupTracker, periodTracker);
             correspondingTiles.push(a);
 
-            groupTracker++;
             periodTracker++;
         }
+
+        groupTracker++;
 
         // console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
         // console.log(correspondingTiles);
@@ -201,22 +202,22 @@ let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7",
 let roomsAnchor = [...rooms];
 
 subjects.priomha.forEach((subject) => {
-    let chosen = chooseRandTile();
+    let chosen = chooseRandTile()[0];
 
     console.log(chosen);
 
-    // chosen.addSubject(subject.name, subject.examLength);
-    // chosen.addRoom(chooseRandRoom());
+    chosen.addSubject(subject.name, subject.examLength);
+    chosen.addRoom(chooseRandRoom());
 });
 
-// subjects.roghnach.forEach((group) => {
-//     for (const subject of group) {
-//         let chosen = chooseRandTile()[0];
+subjects.roghnach.forEach((group) => {
+    for (const subject of group) {
+        let chosen = chooseRandTile()[0];
 
-//         chosen.addSubject(subject, 1); // just for now
-//         chosen.addRoom(chooseRandRoom());
-//     }
-// });
+        chosen.addSubject(subject, 1); // just for now
+        chosen.addRoom(chooseRandRoom());
+    }
+});
 
 // fixArrays();
 
