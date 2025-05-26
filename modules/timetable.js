@@ -205,18 +205,18 @@ subjects.priomha.forEach((subject) => {
 
     console.log(chosen);
 
-    chosen.addSubject(subject.name, subject.examLength);
-    chosen.addRoom(chooseRandRoom());
+    // chosen.addSubject(subject.name, subject.examLength);
+    // chosen.addRoom(chooseRandRoom());
 });
 
-subjects.roghnach.forEach((group) => {
-    for (const subject of group) {
-        let chosen = chooseRandTile()[0];
+// subjects.roghnach.forEach((group) => {
+//     for (const subject of group) {
+//         let chosen = chooseRandTile()[0];
 
-        chosen.addSubject(subject, 1); // just for now
-        chosen.addRoom(chooseRandRoom());
-    }
-});
+//         chosen.addSubject(subject, 1); // just for now
+//         chosen.addRoom(chooseRandRoom());
+//     }
+// });
 
 // fixArrays();
 
