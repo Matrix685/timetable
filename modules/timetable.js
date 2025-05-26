@@ -7,7 +7,7 @@ function Tile(day, group, period) {
 
     this.addSubject = function (text, examLength) {
         // const tile = timetable[this.day][this.period].firstElementChild;
-        const tile = timetable[this.day][this.group][0];
+        const tile = timetable[this.day][this.group].firstElementChild;
 
         tile.firstElementChild.innerHTML = text;
         tile.style.setProperty("--exam-length", examLength);
@@ -15,7 +15,7 @@ function Tile(day, group, period) {
 
     this.addRoom = function (text) {
         // const tile = timetable[this.day][this.period].firstElementChild;
-        const tile = timetable[this.day][this.group][0];
+        const tile = timetable[this.day][this.group].firstElementChild;
 
         tile.lastElementChild.innerHTML = text;
     };
