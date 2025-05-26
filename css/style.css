@@ -112,13 +112,14 @@ h3 {
 
 .rows,
 .time-rows {
-    --exam-length: 1;
+    /* --exam-length: 1; */
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(50% * var(--exam-length));
+    /* height: calc(50% * var(--exam-length)); */
+    height: 50%;
     border-bottom: 1px solid var(--text-color);
 }
 

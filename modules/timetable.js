@@ -7,10 +7,15 @@ function Tile(day, group, period) {
 
     this.addSubject = function (text, examLength) {
         // const tile = timetable[this.day][this.period].firstElementChild;
-        const tile = timetable[this.day][this.group].firstElementChild;
+        const group = timetable[this.day][this.group];
 
-        tile.firstElementChild.innerHTML = text;
-        tile.style.setProperty("--exam-length", examLength);
+        group[0].firstElementChild.innerHTML = text;
+        // tile.style.setProperty("--exam-length", examLength);
+        let tileHeight = 50 * examLength;
+        let responsiveHeight = 100 - tileHeight;
+
+        group[0].style.height = `${tileHeight}%`;
+        group[1].style.height = `${responsiveHeight}%`;
     };
 
     this.addRoom = function (text) {
@@ -151,7 +156,7 @@ function chooseRandTile() {
 
     let randGroup = rand(randDay);
 
-    console.log(randGroup);
+    // console.log(randGroup);
 
     return removeChosen(randDay, randGroup);
 }
@@ -204,7 +209,7 @@ let roomsAnchor = [...rooms];
 subjects.priomha.forEach((subject) => {
     let chosen = chooseRandTile()[0];
 
-    console.log(chosen);
+    // console.log(chosen);
 
     chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
