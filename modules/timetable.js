@@ -1,18 +1,21 @@
 const days = document.getElementsByClassName("classes");
 
-function Tile(day, period) {
+function Tile(day, group, period) {
     this.day = day;
+    this.group = group;
     this.period = period;
 
     this.addSubject = function (text, examLength) {
-        const tile = timetable[this.day][this.period].firstElementChild;
+        // const tile = timetable[this.day][this.period].firstElementChild;
+        const tile = timetable[this.day][this.group][0];
 
         tile.firstElementChild.innerHTML = text;
         tile.style.setProperty("--exam-length", examLength);
     };
 
     this.addRoom = function (text) {
-        const tile = timetable[this.day][this.period].firstElementChild;
+        // const tile = timetable[this.day][this.period].firstElementChild;
+        const tile = timetable[this.day][this.group][0];
 
         tile.lastElementChild.innerHTML = text;
     };
@@ -23,15 +26,16 @@ let tiles = [];
 
 // let i = 0;
 let dayTracker = 0;
-let periodTracker = 0;
 
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
 
     let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
+    let periodTracker = 0;
 
     children.forEach((rowGroup) => {
         let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
+        let groupTracker = 0;
 
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
@@ -48,9 +52,10 @@ for (const day of days) {
 
             rowGroup.appendChild(row);
 
-            let a = new Tile(dayTracker, periodTracker);
+            let a = new Tile(dayTracker, groupTracker, periodTracker);
             correspondingTiles.push(a);
 
+            groupTracker++;
             periodTracker++;
         }
 
@@ -67,7 +72,6 @@ for (const day of days) {
     tiles.push(correspondingGroup);
 
     dayTracker++;
-    periodTracker = 0;
 }
 
 // for (const day of days) {
