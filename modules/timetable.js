@@ -59,14 +59,14 @@ for (const day of days) {
             periodTracker++;
         }
 
-        console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-        console.log(correspondingTiles);
+        // console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
+        // console.log(correspondingTiles);
 
         correspondingGroup.push(correspondingTiles);
     });
 
-    console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-    console.log(correspondingGroup);
+    // console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
+    // console.log(correspondingGroup);
 
     timetable.push(children);
     tiles.push(correspondingGroup);
@@ -150,6 +150,8 @@ function chooseRandTile() {
 
     let randGroup = rand(randDay);
 
+    console.log(randGroup);
+
     return removeChosen(randDay, randGroup);
 }
 
@@ -199,7 +201,7 @@ let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7",
 let roomsAnchor = [...rooms];
 
 subjects.priomha.forEach((subject) => {
-    let chosen = chooseRandTile()[0];
+    let chosen = chooseRandTile();
 
     console.log(chosen);
 
