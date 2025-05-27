@@ -1,18 +1,26 @@
 const days = document.getElementsByClassName("classes");
 
-function Tile(day, period) {
+function Tile(day, group, period) {
     this.day = day;
+    this.group = group;
     this.period = period;
 
     this.addSubject = function (text, examLength) {
-        const tile = timetable[this.day][this.period].firstElementChild;
+        // const tile = timetable[this.day][this.period].firstElementChild;
+        const group = timetable[this.day][this.group];
 
-        tile.firstElementChild.innerHTML = text;
-        tile.style.setProperty("--exam-length", examLength);
+        group.firstElementChild.firstElementChild.innerHTML = text;
+        // tile.style.setProperty("--exam-length", examLength);
+        let tileHeight = 50 * examLength;
+        let responsiveHeight = 100 - tileHeight;
+
+        group.firstElementChild.style.height = `${tileHeight}%`;
+        group.lastElementChild.style.height = `${responsiveHeight}%`;
     };
 
     this.addRoom = function (text) {
-        const tile = timetable[this.day][this.period].firstElementChild;
+        // const tile = timetable[this.day][this.period].firstElementChild;
+        const tile = timetable[this.day][this.group].firstElementChild;
 
         tile.lastElementChild.innerHTML = text;
     };
@@ -23,12 +31,13 @@ let tiles = [];
 
 // let i = 0;
 let dayTracker = 0;
-let periodTracker = 0;
 
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
 
     let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
+    let periodTracker = 0;
+    let groupTracker = 0;
 
     children.forEach((rowGroup) => {
         let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
@@ -48,26 +57,27 @@ for (const day of days) {
 
             rowGroup.appendChild(row);
 
-            let a = new Tile(dayTracker, periodTracker);
+            let a = new Tile(dayTracker, groupTracker, periodTracker);
             correspondingTiles.push(a);
 
             periodTracker++;
         }
 
-        console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-        console.log(correspondingTiles);
+        groupTracker++;
+
+        // console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
+        // console.log(correspondingTiles);
 
         correspondingGroup.push(correspondingTiles);
     });
 
-    console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-    console.log(correspondingGroup);
+    // console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
+    // console.log(correspondingGroup);
 
     timetable.push(children);
     tiles.push(correspondingGroup);
 
     dayTracker++;
-    periodTracker = 0;
 }
 
 // for (const day of days) {
@@ -146,6 +156,8 @@ function chooseRandTile() {
 
     let randGroup = rand(randDay);
 
+    // console.log(randGroup);
+
     return removeChosen(randDay, randGroup);
 }
 
@@ -197,7 +209,7 @@ let roomsAnchor = [...rooms];
 subjects.priomha.forEach((subject) => {
     let chosen = chooseRandTile()[0];
 
-    console.log(chosen);
+    // console.log(chosen);
 
     chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
