@@ -70,7 +70,9 @@ for (const day of days) {
 
 function filterArrays() {
     for (const day of timetable) {
-        day = day.map((group) => (group = group.filter((n) => n.dataset.available != "false")));
+        day.forEach((group) => {
+            group = group.filter((n) => n.dataset.available != "false");
+        });
     }
 
     tiles = [];
