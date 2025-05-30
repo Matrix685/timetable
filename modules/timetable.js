@@ -68,10 +68,7 @@ for (const day of days) {
 
 function filterArrays() {
     for (const day of timetable) {
-        day.forEach((group) => {
-            // console.log(group);
-            group = group.filter((n) => n.dataset.available != "false");
-        });
+        day = day.map((group) => (group = group.filter((n) => n.dataset.available != "false")));
     }
 
     tiles = [];
@@ -186,7 +183,7 @@ function chooseRandTile() {
         randGroup = rand(randDay);
     }
 
-    console.log(randGroup);
+    // console.log(randGroup);
 
     return removeChosen(randDay, randGroup);
 }
