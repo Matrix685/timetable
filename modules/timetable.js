@@ -177,7 +177,7 @@ function chooseRandTile() {
         randGroup = rand(randDay);
     }
 
-    // console.log(randGroup);
+    console.log(randGroup);
 
     return removeChosen(randDay, randGroup);
 }
