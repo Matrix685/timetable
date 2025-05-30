@@ -96,6 +96,8 @@ function filterArrays() {
     }
 }
 
+filterArrays();
+
 // for (const day of days) {
 //     let children = Array.from(day.children);
 
