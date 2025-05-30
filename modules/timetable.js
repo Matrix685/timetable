@@ -90,10 +90,10 @@ function filterArrays() {
         });
 
         groupTracker++;
-    }
+        dayTracker++;
 
-    dayTracker++;
-    tiles.push(correspondingGroup);
+        tiles.push(correspondingGroup);
+    }
 }
 
 // for (const day of days) {
