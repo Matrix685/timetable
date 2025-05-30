@@ -31,7 +31,6 @@ function Tile(day, group, period) {
 }
 
 let timetable = [];
-let tiles = [];
 
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
@@ -64,10 +63,12 @@ for (const day of days) {
 function filterArrays() {
     for (const day of timetable) {
         day.forEach((group) => {
+            console.log(group);
             group = group.filter((n) => n.dataset.available != "false");
         });
     }
 
+    let tiles = [];
     let dayTracker = 0;
 
     for (const day of timetable) {
@@ -83,11 +84,10 @@ function filterArrays() {
         });
 
         groupTracker++;
-
-        correspondingGroup.push(correspondingTiles);
     }
 
     dayTracker++;
+    tiles.push(correspondingGroup);
 }
 
 // for (const day of days) {
