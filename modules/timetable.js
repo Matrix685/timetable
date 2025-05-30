@@ -17,6 +17,8 @@ function Tile(day, group, period) {
         group[0].style.height = `${tileHeight}%`;
         group[1].style.height = `${responsiveHeight}%`;
 
+        group[0].dataset.available = "false";
+
         if (responsiveHeight < 50) {
             group[1].dataset.available = "false";
         }
