@@ -69,7 +69,7 @@ for (const day of days) {
 function filterArrays() {
     for (const day of timetable) {
         day.forEach((group) => {
-            console.log(group);
+            // console.log(group);
             group = group.filter((n) => n.dataset.available != "false");
         });
     }
@@ -174,7 +174,7 @@ function chooseRandTile() {
 
     if (randGroup.length == 0) {
         removeChosen(randDay, randGroup);
-        randGroup = rand(tiles);
+        randGroup = rand(randDay);
     }
 
     // console.log(randGroup);
