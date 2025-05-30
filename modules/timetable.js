@@ -9,22 +9,22 @@ function Tile(day, group, period) {
         // const tile = timetable[this.day][this.period].firstElementChild;
         const group = timetable[this.day][this.group];
 
-        group.firstElementChild.firstElementChild.innerHTML = text;
+        group[0].firstElementChild.innerHTML = text;
         // tile.style.setProperty("--exam-length", examLength);
         let tileHeight = 50 * examLength;
         let responsiveHeight = 100 - tileHeight;
 
-        group.firstElementChild.style.height = `${tileHeight}%`;
-        group.lastElementChild.style.height = `${responsiveHeight}%`;
+        group[0].style.height = `${tileHeight}%`;
+        group[1].style.height = `${responsiveHeight}%`;
 
         if (responsiveHeight < 50) {
-            group.lastElementChild.dataset.available = "false";
+            group[1].dataset.available = "false";
         }
     };
 
     this.addRoom = function (text) {
         // const tile = timetable[this.day][this.period].firstElementChild;
-        const tile = timetable[this.day][this.group].firstElementChild;
+        const tile = timetable[this.day][this.group][0];
 
         tile.lastElementChild.innerHTML = text;
     };
@@ -36,7 +36,9 @@ let tiles = [];
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
 
-    children.forEach((rowGroup) => {
+    let groups = children.map((rowGroup) => {
+        let group = [];
+
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
             row.classList.add("rows");
@@ -52,13 +54,16 @@ for (const day of days) {
             row.appendChild(room);
 
             rowGroup.appendChild(row);
+            group.appendChild(row);
         }
+
+        return group;
     });
 
     // console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
     // console.log(correspondingGroup);
 
-    timetable.push(children);
+    timetable.push(groups);
 }
 
 function filterArrays() {
