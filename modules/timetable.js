@@ -16,6 +16,10 @@ function Tile(day, group, period) {
 
         group.firstElementChild.style.height = `${tileHeight}%`;
         group.lastElementChild.style.height = `${responsiveHeight}%`;
+
+        if (responsiveHeight < 50) {
+            group.lastElementChild.dataset.available = "false";
+        }
     };
 
     this.addRoom = function (text) {
@@ -29,22 +33,14 @@ function Tile(day, group, period) {
 let timetable = [];
 let tiles = [];
 
-// let i = 0;
-let dayTracker = 0;
-
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
 
-    let correspondingGroup = []; // needs to reset every day after pushing 3 arrays
-    let periodTracker = 0;
-    let groupTracker = 0;
-
     children.forEach((rowGroup) => {
-        let correspondingTiles = []; // needs to reset every new row-group after creating 2 tiles
-
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
             row.classList.add("rows");
+            row.dataset.available = "true";
 
             let subject = document.createElement("p");
             subject.id = "subject";
@@ -56,26 +52,40 @@ for (const day of days) {
             row.appendChild(room);
 
             rowGroup.appendChild(row);
-
-            let a = new Tile(dayTracker, groupTracker, periodTracker);
-            correspondingTiles.push(a);
-
-            periodTracker++;
         }
-
-        groupTracker++;
-
-        // console.log("%cTILES ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-        // console.log(correspondingTiles);
-
-        correspondingGroup.push(correspondingTiles);
     });
 
     // console.log("%cGROUP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
     // console.log(correspondingGroup);
 
     timetable.push(children);
-    tiles.push(correspondingGroup);
+}
+
+function filterArrays() {
+    for (const day of timetable) {
+        day.forEach((group) => {
+            group = group.filter((n) => n.dataset.available != "false");
+        });
+    }
+
+    let dayTracker = 0;
+
+    for (const day of timetable) {
+        let correspondingGroup = [];
+        let periodTracker = 0;
+        let groupTracker = 0;
+
+        day.forEach(() => {
+            let a = new Tile(dayTracker, groupTracker, periodTracker);
+            correspondingGroup.push(a);
+
+            periodTracker++;
+        });
+
+        groupTracker++;
+
+        correspondingGroup.push(correspondingTiles);
+    }
 
     dayTracker++;
 }
@@ -156,6 +166,11 @@ function chooseRandTile() {
 
     let randGroup = rand(randDay);
 
+    if (randGroup.length == 0) {
+        removeChosen(randDay, randGroup);
+        randGroup = rand(tiles);
+    }
+
     // console.log(randGroup);
 
     return removeChosen(randDay, randGroup);
@@ -200,13 +215,15 @@ let subjects = {
         ["Adhmadóireacht", "Innealtóireacht", "Eacnamaíocht Bhaile"],
         ["Ealaín", "Graific Teicniúil", "Gnó"],
         ["Fisic", "Ceimic", "Bitheolaíocht"],
+        ["Tíreolaíocht", "Stair", "OSPS"],
     ],
 };
 
 let rooms = ["Seomra Mór", "Bialann", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12", "S13", "S14", "S15"];
-let roomsAnchor = [...rooms];
 
 subjects.priomha.forEach((subject) => {
+    filterArrays();
+
     let chosen = chooseRandTile()[0];
 
     // console.log(chosen);
@@ -217,41 +234,13 @@ subjects.priomha.forEach((subject) => {
 
 subjects.roghnach.forEach((group) => {
     for (const subject of group) {
+        filterArrays();
+
         let chosen = chooseRandTile()[0];
 
         chosen.addSubject(subject, 1); // just for now
         chosen.addRoom(chooseRandRoom());
     }
 });
-
-// fixArrays();
-
-function fixArrays() {
-    tiles = [];
-    let l = 0;
-    let m = 0;
-
-    for (const day of days) {
-        let b = [];
-
-        let children = Array.from(day.children);
-
-        children = children.filter((n) => n.id !== "locked");
-
-        children.map(() => {
-            let a = new Tile(l, m);
-            b.push(a);
-
-            m++;
-        });
-
-        tiles.push(b);
-
-        l++;
-        m = 0;
-    }
-
-    rooms = roomsAnchor;
-}
 
 export { timetable };
