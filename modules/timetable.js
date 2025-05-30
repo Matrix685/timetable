@@ -54,7 +54,7 @@ for (const day of days) {
             row.appendChild(room);
 
             rowGroup.appendChild(row);
-            group.appendChild(row);
+            group.push(row);
         }
 
         return group;
