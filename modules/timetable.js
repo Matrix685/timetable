@@ -82,14 +82,21 @@ function filterArrays() {
         let periodTracker = 0;
         let groupTracker = 0;
 
-        day.forEach(() => {
-            let a = new Tile(dayTracker, groupTracker, periodTracker);
-            correspondingGroup.push(a);
+        for (const group of day) {
+            let correspondingTiles = [];
 
-            periodTracker++;
-        });
+            group.forEach(() => {
+                let a = new Tile(dayTracker, groupTracker, periodTracker);
+                correspondingTiles.push(a);
 
-        groupTracker++;
+                periodTracker++;
+            });
+
+            groupTracker++;
+
+            correspondingGroup.push(correspondingTiles);
+        }
+
         dayTracker++;
 
         tiles.push(correspondingGroup);
