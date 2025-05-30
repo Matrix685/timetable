@@ -232,7 +232,7 @@ subjects.priomha.forEach((subject) => {
 
     let chosen = chooseRandTile()[0];
 
-    // console.log(chosen);
+    console.log(chosen);
 
     chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
