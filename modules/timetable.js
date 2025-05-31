@@ -12,15 +12,18 @@ function Tile(day, group, period) {
         group[0].firstElementChild.innerHTML = text;
         // tile.style.setProperty("--exam-length", examLength);
         let tileHeight = 50 * examLength;
-        let responsiveHeight = 100 - tileHeight;
 
         group[0].style.height = `${tileHeight}%`;
-        group[1].style.height = `${responsiveHeight}%`;
-
         group[0].dataset.available = "false";
 
-        if (responsiveHeight < 50) {
-            group[1].dataset.available = "false";
+        if (group.length == 2) {
+            let responsiveHeight = 100 - tileHeight;
+
+            group[1].style.height = `${responsiveHeight}%`;
+
+            if (responsiveHeight < 50) {
+                group[1].dataset.available = "false";
+            }
         }
     };
 
@@ -70,6 +73,7 @@ for (const day of days) {
 
 function filterArrays() {
     timetable = timetable.map((day) => day.map((group) => group.filter((n) => n.dataset.available != "false")));
+    timetable = timetable.map((day) => day.filter((group) => group.length != 0));
 
     tiles = [];
     let dayTracker = 0;
