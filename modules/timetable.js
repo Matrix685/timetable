@@ -76,12 +76,14 @@ for (const day of days) {
     timetablePopup.push(dayPopup);
 }
 
-console.log(timetablePopup);
+// console.log(timetablePopup);
 
 function filterArrays() {
     timetable = timetable.filter((day) => day.length != 0);
     timetable = timetable.map((day) => day.filter((group) => group.length != 0));
     timetable = timetable.map((day) => day.map((group) => group.filter((n) => n.dataset.available != "false")));
+
+    console.log(timetable);
 
     tiles = [];
     let dayTracker = 0;
