@@ -79,9 +79,9 @@ for (const day of days) {
 // console.log(timetablePopup);
 
 function filterArrays() {
-    timetable = timetable.filter((day) => day.length != 0);
-    timetable = timetable.map((day) => day.filter((group) => group.length != 0));
     timetable = timetable.map((day) => day.map((group) => group.filter((n) => n.dataset.available != "false")));
+    timetable = timetable.map((day) => day.filter((group) => group.length != 0));
+    timetable = timetable.filter((day) => day.length != 0);
 
     console.log(timetable);
 
