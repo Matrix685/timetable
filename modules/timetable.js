@@ -36,10 +36,13 @@ function Tile(day, group, period) {
 }
 
 let timetable = [];
+let timetablePopup = [];
 let tiles = [];
 
 for (const day of days) {
     let children = Array.from(day.children); // array of row-groups
+
+    let dayPopup = [];
 
     let groups = children.map((rowGroup) => {
         let group = [];
@@ -60,6 +63,7 @@ for (const day of days) {
 
             rowGroup.appendChild(row);
             group.push(row);
+            dayPopup.push(row);
         }
 
         return group;
@@ -69,11 +73,15 @@ for (const day of days) {
     // console.log(correspondingGroup);
 
     timetable.push(groups);
+    timetablePopup.push(dayPopup);
 }
 
+console.log(timetablePopup);
+
 function filterArrays() {
-    timetable = timetable.map((day) => day.map((group) => group.filter((n) => n.dataset.available != "false")));
+    timetable = timetable.filter((day) => day.length != 0);
     timetable = timetable.map((day) => day.filter((group) => group.length != 0));
+    timetable = timetable.map((day) => day.map((group) => group.filter((n) => n.dataset.available != "false")));
 
     tiles = [];
     let dayTracker = 0;
@@ -106,58 +114,8 @@ function filterArrays() {
 
 filterArrays();
 
-// for (const day of days) {
-//     let children = Array.from(day.children);
-
-//     // children = children.filter((n) => n.id !== "locked");
-
-//     let p = [];
-//     let v = [];
-
-//     children.map((n) => {
-//         let b = [];
-
-//         for (let l = 0; l < 2; l++) {
-//             let row = document.createElement("div");
-//             row.classList.add("rows");
-
-//             let subject = document.createElement("p");
-//             subject.id = "subject";
-
-//             let room = document.createElement("p");
-//             room.id = "room";
-
-//             row.appendChild(subject);
-//             row.appendChild(room);
-
-//             n.appendChild(row);
-
-//             let a = new Tile(j, k);
-//             b.push(a);
-
-//             k++;
-//         }
-
-//         console.log("%cB ARRAY (should have 2 objects)", "font-size: 15px; color: #f00;");
-//         console.log(b);
-
-//         p.push(b);
-//     });
-
-//     // v.push(p);
-//     console.log("%cP ARRAY (should have 3 arrays of 2 objects)", "font-size: 15px; color: #0f0");
-//     console.log(p);
-
-//     timetable[i] = children;
-//     tiles.push(p);
-
-//     i++;
-//     j++;
-//     k = 0;
-// }
-
-console.log(timetable);
-console.log(tiles);
+// console.log(timetable);
+// console.log(tiles);
 
 function removeChosen(array, chosen) {
     array.splice(array.indexOf(chosen), 1);
@@ -171,21 +129,7 @@ function rand(array) {
 
 function chooseRandTile() {
     let randDay = rand(tiles);
-    // console.log(randDay);
-
-    if (randDay.length == 0) {
-        removeChosen(tiles, randDay);
-        randDay = rand(tiles);
-    }
-    // WEAKLING
-    // WAAAAAAAAAAAA
-
     let randGroup = rand(randDay);
-
-    if (randGroup.length == 0) {
-        removeChosen(randDay, randGroup);
-        randGroup = rand(randDay);
-    }
 
     // console.log(randGroup);
 
@@ -242,7 +186,7 @@ subjects.priomha.forEach((subject) => {
 
     let chosen = chooseRandTile()[0];
 
-    console.log(chosen);
+    // console.log(chosen);
 
     chosen.addSubject(subject.name, subject.examLength);
     chosen.addRoom(chooseRandRoom());
@@ -259,4 +203,4 @@ subjects.roghnach.forEach((group) => {
     }
 });
 
-export { timetable };
+export { timetablePopup };

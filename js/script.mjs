@@ -1,4 +1,4 @@
-import { timetable } from "../modules/timetable.js";
+import { timetablePopup as timetable } from "../modules/timetable.js";
 import { commencePopup } from "../modules/popup.js";
 
 const weekDays = ["Dé Luain", "Dé Máirt", "Dé Céadaoin", "Déardaoin", "Dé hAoine"];
