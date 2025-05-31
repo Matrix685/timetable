@@ -69,9 +69,7 @@ for (const day of days) {
 }
 
 function filterArrays() {
-    for (let day of timetable) {
-        day = day.map((group) => (group = group.filter((n) => n.dataset.available != "false")));
-    }
+    timetable = timetable.map((day) => day.map((group) => group.filter((n) => n.dataset.available != "false")));
 
     tiles = [];
     let dayTracker = 0;
